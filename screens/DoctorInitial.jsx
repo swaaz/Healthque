@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import AddNumber from '../components/AddNumber'
+import AddOTP from '../components/AddOTP';
 
 const DoctorInitial = () => {
+    const [isOtpSent, setIsOtpSent] = useState(false);
     return (
         <SafeAreaView>
             <View style={styles.container}>
@@ -11,10 +14,12 @@ const DoctorInitial = () => {
                 />
                 <View style={styles.form}>
                     <Text style={styles.title}>Login as Doctor</Text>
-                    <TextInput  style={styles.input} placeholder={'Enter Contact Number'} />
-                    <TouchableOpacity style={styles.button}>
-                        <Text style={styles.submit}>Login</Text>
-                    </TouchableOpacity>
+                    {
+                        isOtpSent?
+                        <AddOTP/>
+                        :
+                        <AddNumber setIsOtpSent={setIsOtpSent} />
+                    }
                 </View>
             </View>
         </SafeAreaView>
@@ -46,27 +51,7 @@ const styles = StyleSheet.create({
         letterSpacing : 2,
         marginVertical : 20
     },
-    input : {
-        width: '60%',
-        backgroundColor : 'white',
-        height: 50,
-        borderRadius : 10,
-        paddingHorizontal : 20,
-        marginVertical : 20
-    },
-    button : {
-        width: 200,
-        backgroundColor : '#034C81',
-        alignItems : 'center',
-        justifyContent : 'center',
-        height: 40,
-        borderRadius : 10,
-        
-    },
-    submit  :{
-        color: 'white',
-        fontWeight : 'bold'
-    }
+    
 
 
 })
