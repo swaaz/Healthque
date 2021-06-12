@@ -38,7 +38,7 @@ const AddHealthIssuesPage = () => {
 
       <View style={styles.form}>
         <View>
-          <Image source={{ uri: "" }} />
+          {/* <Image source={{ uri: "" }} /> */}
           <Text style={styles.title}>Surgery</Text>
         </View>
 
@@ -87,20 +87,20 @@ export default AddHealthIssuesPage;
 
 const styles = StyleSheet.create({
   container: {
-    // width: "100%",
-    // height: "100%",
+    width: "100%",
+    height: "100%",
     backgroundColor: "white",
     alignItems: "center",
     justifyContent: "space-between",
   },
 
   form: {
-    // width: "100%",
-    // height: "100%",
+    width: "100%",
+    height: "100%",
     backgroundColor: "#5BA2F4",
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
   },
 
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
     // position: 'absolute',
     fontSize: 30,
     color: "white",
-    bottom: 100,
+    // bottom: 100,
     fontWeight: "700",
   },
   button: {

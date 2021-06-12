@@ -7,6 +7,7 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 
 import NameCard from "../components/NameCard";
@@ -30,64 +31,69 @@ const AddHealthIssuesPage = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <NameCard
-        imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
-        name="Swasthik Shetty"
-      />
+    <ScrollView>
+      <View style={styles.container}>
+        <NameCard
+          imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
+          name="Swasthik Shetty"
+        />
 
-      <View style={styles.form}>
-        <View>
-          <Image source={{ uri: "" }} />
-          <Text style={styles.title}>Surgery</Text>
+        <View style={styles.form}>
+          <View>
+            {/* <Image
+              style={{ height: 25, width: 25 }}
+              source={{ uri: "../assets/vectors/doctor.png" }}
+            /> */}
+            <Text style={styles.title}>Surgery</Text>
+          </View>
+
+          <TextInput
+            style={styles.textInput}
+            placeholder="Name"
+            // value={formData.name}
+            onChange={handleChange}
+          />
+
+          <TextInput
+            style={styles.textInput}
+            name="date"
+            placeholder="Date of diagnosis"
+            // value={
+            //     formData.date
+            // }
+            onChange={handleChange}
+          />
+
+          <TextInput
+            style={styles.textInput}
+            name="procedure"
+            placeholder="Procedure Used"
+            // value={formData.procedure}
+            onChange={handleChange}
+          />
+
+          <TextInput
+            style={styles.textInput}
+            name="result"
+            placeholder="Results"
+            //   value={formData.result}
+            onChange={handleChange}
+          />
+
+          <TextInput
+            style={styles.textInput}
+            name="treatment"
+            placeholder="Treatment"
+            //   value={formData.treatment}
+            onChange={handleChange}
+          />
+
+          <TouchableOpacity style={styles.button} onPress={() => {}}>
+            <Text style={styles.buttonTitle}>Add</Text>
+          </TouchableOpacity>
         </View>
-
-        <TextInput
-          style={styles.textInput}
-          placeholder="Name"
-          // value={formData.name}
-          onChange={handleChange}
-        />
-
-        <TextInput
-          style={styles.textInput}
-          name="date"
-          placeholder="Date of diagnosis"
-          // value={
-          //     formData.date
-          // }
-          onChange={handleChange}
-        />
-
-        <TextInput
-          style={styles.textInput}
-          name="procedure"
-          placeholder="Procedure Used"
-          // value={formData.procedure}
-          onChange={handleChange}
-        />
-
-        <TextInput
-          style={styles.textInput}
-          name="result"
-          placeholder="Results"
-          //   value={formData.result}
-          onChange={handleChange}
-        />
-
-        <TextInput
-          style={styles.textInput}
-          name="treatment"
-          placeholder="Treatment"
-          //   value={formData.treatment}
-          onChange={handleChange}
-        />
-
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
-          <Text style={styles.buttonTitle}>Add</Text>
-        </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -108,13 +114,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#5BA2F4",
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
   },
 
   textInput: {
     height: 56,
-    marginTop: 40,
+    marginTop: 30,
     width: 280,
     // fontFamily: 'Poppins',
     // borderWidth: 1,
@@ -130,7 +136,7 @@ const styles = StyleSheet.create({
     // position: 'absolute',
     fontSize: 30,
     color: "white",
-    bottom: 100,
+    // bottom: 100,
     fontWeight: "700",
   },
   button: {
@@ -144,6 +150,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginVertical: 30,
     color: "white",
+    // marginBottom: 10,
   },
   buttonTitle: {
     fontSize: 20,

@@ -24,11 +24,13 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 50,
     marginRight: 10,
+    borderWidth: 2,
+    borderColor: "black",
   },
 
   profileName: {
     fontWeight: "700",
-    fontSize: 32,
+    fontSize: 18,
   },
 });
 
