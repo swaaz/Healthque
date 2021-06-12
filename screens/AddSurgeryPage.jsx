@@ -7,11 +7,54 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  TouchableWithoutFeedback,
 } from "react-native";
 
 import NameCard from "../components/NameCard";
 
-const AddHealthIssuesPage = () => {
+const RadioButton = (props) => {
+  return (
+    <View
+      style={{
+        flexDirection: "row",
+        alignContent: "center",
+        alignItems: "center",
+        marginTop: 30,
+        marginRight: 10,
+      }}
+    >
+      <View
+        style={[
+          {
+            height: 24,
+            width: 24,
+            borderRadius: 12,
+            borderWidth: 2,
+            borderColor: "#000",
+            alignItems: "center",
+            justifyContent: "center",
+            marginRight: 5,
+          },
+          props.style,
+        ]}
+      >
+        {props.selected && (
+          <View
+            style={{
+              height: 12,
+              width: 12,
+              borderRadius: 6,
+              backgroundColor: "#000",
+            }}
+          />
+        )}
+      </View>
+      <Text style={{ fontSize: 20 }}>{props.text}</Text>
+    </View>
+  );
+};
+
+const AddSurgeryPage = () => {
   const form = {
     name: "",
     date: "",
@@ -29,6 +72,8 @@ const AddHealthIssuesPage = () => {
     // setFormData({ ...formData, [name]: value });
   };
 
+  const [option, setOption] = useState(false);
+
   return (
     <View style={styles.container}>
       <NameCard
@@ -38,13 +83,14 @@ const AddHealthIssuesPage = () => {
 
       <View style={styles.form}>
         <View>
+          {" "}
           {/* <Image source={{ uri: "" }} /> */}
           <Text style={styles.title}>Surgery</Text>
         </View>
 
         <TextInput
           style={styles.textInput}
-          placeholder="Name"
+          placeholder="Surgery Name"
           // value={formData.name}
           onChange={handleChange}
         />
@@ -52,7 +98,7 @@ const AddHealthIssuesPage = () => {
         <TextInput
           style={styles.textInput}
           name="date"
-          placeholder="Date of diagnosis"
+          placeholder="Procedure"
           // value={
           //     formData.date
           // }
@@ -62,15 +108,24 @@ const AddHealthIssuesPage = () => {
         <TextInput
           style={styles.textInput}
           name="procedure"
-          placeholder="Procedure Used"
+          placeholder="Date of Surgery"
           // value={formData.procedure}
           onChange={handleChange}
         />
 
+        <View style={styles.buttonGroup}>
+          <TouchableOpacity onPress={() => setOption(!option)}>
+            <RadioButton selected={option} text="Successful" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => setOption(!option)}>
+            <RadioButton selected={option} text="Unsuccessful" />
+          </TouchableOpacity>
+        </View>
+
         <TextInput
           style={styles.textInput}
           name="treatment"
-          placeholder="Treatment"
+          placeholder="Complication"
           //   value={formData.treatment}
           onChange={handleChange}
         />
@@ -83,7 +138,7 @@ const AddHealthIssuesPage = () => {
   );
 };
 
-export default AddHealthIssuesPage;
+export default AddSurgeryPage;
 
 const styles = StyleSheet.create({
   container: {
@@ -144,5 +199,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     marginHorizontal: 10,
+  },
+
+  buttonGroup: {
+    flexDirection: "row",
   },
 });
