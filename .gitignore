@@ -207,3 +207,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Expo webcache
+.expo/web/cache
