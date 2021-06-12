@@ -10,57 +10,59 @@ import AddHealthIssuesPage from '../screens/AddHealthIssuesPage'
 import AddHospitalizationPage from '../screens/AddHospitalizationPage'
 import AddVaccinePage from '../screens/AddVaccinePage'
 import AddSurgeryPage from '../screens/AddSurgeryPage'
+import AddAllergyPage from '../screens/AddAllergyPage'
+import AddMedicationPage from '../screens/AddMedicationPage'
 
 
 const screens = {
-	// PatientSignUp: {
-	//     screen: PatientSignUp,
-	//     navigationOptions: {
-	//         headerShown: false
-	//     }
-	// },
-	// DoctorSignUp: {
-	//     screen: DoctorSignUp,
-	//     navigationOptions: {
-	//         headerShown: false
-	//     }
-	// },
-	// DoctorInitial: {
-	//     screen: DoctorInitial,
-	//     navigationOptions: {
-	//         headerShown: false
-	//     }
-	// },
-	// LandingPage: {
-	//     screen: LandingPage,
-	//     navigationOptions: {
-	//         headerShown: false
-	//     }
-	// },
-	// LandingOption: {
-	//     screen: LandingOption,
-	//     navigationOptions: {
-	//         headerShown: false
-	//     }
-	// },
-	// PatientInitial: {
-	//     screen: PatientInitial,
-	//     navigationOptions: {
-	//         headerShown: false
-	//     }
-	// },
-	// AddHealthIssuesPage: {
-	// 	screen: AddHealthIssuesPage,
-	// 	navigationOptions: {
-	// 		headerShown: false
-	// 	}
-	// },
-	// AddHospitalizationPage: {
-	// 	screen: AddHospitalizationPage,
-	// 	navigationOptions: {
-	// 		headerShown: false
-	// 	}
-	// },
+	PatientSignUp: {
+		screen: PatientSignUp,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+	DoctorSignUp: {
+		screen: DoctorSignUp,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+	DoctorInitial: {
+		screen: DoctorInitial,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+	LandingPage: {
+		screen: LandingPage,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+	LandingOption: {
+		screen: LandingOption,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+	PatientInitial: {
+		screen: PatientInitial,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+	AddHealthIssuesPage: {
+		screen: AddHealthIssuesPage,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+	AddHospitalizationPage: {
+		screen: AddHospitalizationPage,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
 	AddVaccinePage: {
 		screen: AddVaccinePage,
 		navigationOptions: {
@@ -73,10 +75,18 @@ const screens = {
 			headerShown: false
 		}
 	},
-
-
-
-
+	AddAllergyPage: {
+		screen: AddAllergyPage,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+	AddMedicationPage: {
+		screen: AddMedicationPage,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
 }
 
 const AuthStack = createStackNavigator(screens);
