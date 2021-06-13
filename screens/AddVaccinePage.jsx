@@ -12,7 +12,7 @@ import {
 
 import NameCard from "../components/NameCard";
 
-const AddSurgeryPage = () => {
+const AddVaccinePage = () => {
   const form = {
     name: "",
     date: "",
@@ -118,7 +118,7 @@ const AddSurgeryPage = () => {
   );
 };
 
-export default AddSurgeryPage;
+export default AddVaccinePage;
 
 const styles = StyleSheet.create({
   container: {
