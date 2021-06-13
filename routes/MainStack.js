@@ -12,6 +12,10 @@ import AddVaccinePage from '../screens/AddVaccinePage'
 import AddSurgeryPage from '../screens/AddSurgeryPage'
 import AddAllergyPage from '../screens/AddAllergyPage'
 import AddMedicationPage from '../screens/AddMedicationPage'
+import AddGeneralInfoPage from '../screens/AddGeneralInfoPage'
+import AddRedFlagsPage from '../screens/AddRedFlagsPage'
+import AddGaitPage from '../screens/AddGaitPage'
+import AddDeformitiesPage from '../screens/AddDeformitiesPage'
 
 
 const screens = {
@@ -87,6 +91,32 @@ const screens = {
 			headerShown: false
 		}
 	},
+	AddGeneralInfoPage: {
+		screen: AddGeneralInfoPage,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+	AddRedFlagsPage: {
+		screen: AddRedFlagsPage,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+	AddGaitPage: {
+		screen: AddGaitPage,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+	AddDeformitiesPage: {
+		screen: AddDeformitiesPage,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+
+
 }
 
 const AuthStack = createStackNavigator(screens);
