@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import RedFlag from '../components/RedFlag';
 
 const PatientHomePage = () => {
     return (
@@ -43,7 +44,7 @@ const PatientHomePage = () => {
                     <View style={styles.scrollRow}>
                         <ScrollView
                             horizontal
-                            // showsHorizontalScrollIndicator={true}
+                            showsHorizontalScrollIndicator={false}
                         >
                             <TouchableOpacity>
                                 <View style={styles.buttonHistory}>
@@ -101,12 +102,28 @@ const PatientHomePage = () => {
                             <Text style={styles.buttonTitle}>Deformities</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.ButtonPhysical}>
-                            <Text style={styles.buttonTitle}>Deformities</Text>
+                            <Text style={styles.buttonTitle}>Allergies</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.ButtonPhysical}>
-                            <Text style={styles.buttonTitle}>Deformities</Text>
+                            <Text style={styles.buttonTitle}>Gait</Text>
                         </TouchableOpacity>
                     </View>
+
+                    <Text style={styles.title}>Red Flags</Text>
+                    <View style={styles.labels}>
+                        <RedFlag label={'swaaz'} />
+
+                        <RedFlag label={'swaaz'} />
+                        <RedFlag label={'swaaz'} />
+                        <RedFlag label={'swaaz'} />
+                        <RedFlag label={'swaaz'} />
+                        <RedFlag label={'swaaz'} />
+                        <RedFlag label={'swaaz'} />
+                        <RedFlag label={'swaaz'} />
+                        <RedFlag label={'swaaz'} />
+                    </View>
+
+                    
 
                 </View>
             </View>
@@ -122,13 +139,13 @@ const styles = StyleSheet.create({
         height : '100%',
         backgroundColor : 'white',
         alignItems : 'center',
-        justifyContent : 'space-around'
+        justifyContent : 'space-between',
     },
     profile : {
         width: 100,
         height: 100,
         borderRadius : 100/2,
-        marginTop : '20%'
+        marginTop : '10%'
     },
     name : {
         fontSize : 30,
@@ -151,7 +168,8 @@ const styles = StyleSheet.create({
         width: '90%',
         alignItems : 'center',
         flexDirection : 'row',
-        justifyContent : 'space-around'
+        justifyContent : 'space-around',
+        marginBottom : 30
     },
     col : {
         alignItems : 'center'
@@ -166,7 +184,12 @@ const styles = StyleSheet.create({
     card : {
         width: '100%',
         backgroundColor : '#5BA2F4',
-        alignItems : 'center'
+        alignItems : 'center',
+        paddingBottom : 30,
+        borderTopRightRadius : 80,
+        borderTopLeftRadius : 80,
+        elevation : 5
+        // height: '60%',
     },
     button : {
         width: 70,
@@ -186,7 +209,8 @@ const styles = StyleSheet.create({
         fontSize : 30,
         fontWeight : 'bold',
         color: 'white',
-        letterSpacing : 2
+        letterSpacing : 2,
+        marginVertical : 20
     },
     scrollRow : {
         width: '100%',
@@ -197,7 +221,8 @@ const styles = StyleSheet.create({
         backgroundColor : '#034C81',
         paddingVertical : 15,
         borderRadius : 15,
-        marginHorizontal : 10
+        marginHorizontal : 10,
+        elevation : 5
     },
     icons : {
         width: 30,
@@ -211,6 +236,26 @@ const styles = StyleSheet.create({
     rowTwo : {
         flexDirection : 'row',
         justifyContent : 'space-evenly',
-        alignItems : 'center'
+        alignItems : 'center',
+        width: '100%'
+    },
+    ButtonPhysical : {
+        width: '30%',
+        backgroundColor : '#034C81',
+        alignItems : 'center',
+        justifyContent : 'center',
+        paddingVertical : 20,
+        borderRadius : 15,
+        elevation : 5
+    },
+    labels : {
+        width: '100%',
+        height: 60,
+        flexDirection : 'row',
+        alignContent : 'center',
+        flexWrap : 'wrap',
+        justifyContent : 'space-evenly',
+        // paddingBottom : 50,
+        // marginTop : 50
     }
 })
