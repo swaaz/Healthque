@@ -8,9 +8,16 @@ import DoctorSignUp from '../screens/DoctorSignUp';
 import PatientSignUp from '../screens/PatientSignUp';
 import DoctorHomePage from '../screens/DoctorHomePage';
 import AddDetails from '../screens/AddDetails';
+import PatientHomePage from '../screens/PatientHomePage';
 
 
 const screens = {
+    PatientHomePage : {
+        screen : PatientHomePage,
+        navigationOptions : {
+            headerShown : false
+        }
+    },
     AddDetails : {
         screen : AddDetails,
         navigationOptions : {
