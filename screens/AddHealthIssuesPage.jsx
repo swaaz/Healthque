@@ -20,15 +20,23 @@ const AddHealthIssuesPage = () => {
     result: "",
     treatment: "",
   };
+
   const [formData, setFormData] = useState(form);
 
-  const handleChange = (e) => {
-    // const name = e.target.name;
-    // const value = e.target.value;
-    // console.log(e.target);
-    // console.log(name)
-    // setFormData({ ...formData, [name]: value });
-  };
+  //   useEffect(() => {
+  //     console.log(formData);
+  //   });
+
+  //   const handleChange = (e) => {
+  //     const name = e.target.name;
+  //     const value = e.target.value;
+  //     console.log(e.target);
+  //     console.log(name, value);
+  //     setFormData({
+  //       ...formData,
+  //       [name]: value,
+  //     });
+  //   };
 
   return (
     <ScrollView>
@@ -44,48 +52,62 @@ const AddHealthIssuesPage = () => {
               style={{ height: 25, width: 25 }}
               source={{ uri: "../assets/vectors/doctor.png" }}
             /> */}
-            <Text style={styles.title}>Surgery</Text>
+            <Text style={styles.title}>Health Issues</Text>
           </View>
 
           <TextInput
             style={styles.textInput}
             placeholder="Name"
-            // value={formData.name}
-            onChange={handleChange}
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                name: text,
+              })
+            }
           />
 
           <TextInput
             style={styles.textInput}
-            name="date"
             placeholder="Date of diagnosis"
-            // value={
-            //     formData.date
-            // }
-            onChange={handleChange}
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                date: text,
+              })
+            }
           />
 
           <TextInput
             style={styles.textInput}
-            name="procedure"
             placeholder="Procedure Used"
-            // value={formData.procedure}
-            onChange={handleChange}
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                procedure: text,
+              })
+            }
           />
 
           <TextInput
             style={styles.textInput}
-            name="result"
             placeholder="Results"
-            //   value={formData.result}
-            onChange={handleChange}
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                result: text,
+              })
+            }
           />
 
           <TextInput
             style={styles.textInput}
-            name="treatment"
             placeholder="Treatment"
-            //   value={formData.treatment}
-            onChange={handleChange}
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                treatment: text,
+              })
+            }
           />
 
           <TouchableOpacity style={styles.button} onPress={() => {}}>

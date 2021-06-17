@@ -16,9 +16,6 @@ const AddRedFlagsPage = () => {
   const form = {
     name: "",
     date: "",
-    procedure: "",
-    result: "",
-    treatment: "",
   };
   const [formData, setFormData] = useState(form);
 
@@ -50,20 +47,24 @@ const AddRedFlagsPage = () => {
 
         <TextInput
           style={styles.textInput}
-          name="date"
           placeholder="Name"
-          // value={
-          //     formData.date
-          // }
-          onChange={handleChange}
+          onChangeText={(text) =>
+            setFormData({
+              ...formData,
+              name: text,
+            })
+          }
         />
 
         <TextInput
           style={styles.textInput}
-          name="procedure"
           placeholder="Date"
-          // value={formData.procedure}
-          onChange={handleChange}
+          onChangeText={(text) =>
+            setFormData({
+              ...formData,
+              date: text,
+            })
+          }
         />
 
         <TouchableOpacity style={styles.button} onPress={() => {}}>

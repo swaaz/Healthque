@@ -14,21 +14,27 @@ import NameCard from "../components/NameCard";
 
 const AddHospitalizationPage = () => {
   const form = {
-    name: "",
-    date: "",
-    procedure: "",
-    result: "",
+    reason: "",
     treatment: "",
+    joinedDate: "",
+    joinedTime: "",
+    dischargeDate: "",
+    dischargeTime: "",
+    nameOfHospital: "",
   };
   const [formData, setFormData] = useState(form);
 
-  const handleChange = (e) => {
-    // const name = e.target.name;
-    // const value = e.target.value;
-    // console.log(e.target);
-    // console.log(name)
-    // setFormData({ ...formData, [name]: value });
-  };
+  //   useEffect(() => {
+  //     console.log(formData);
+  //   });
+
+  // const handleChange = (e) => {
+  //   const name = e.target.name;
+  //   const value = e.target.value;
+  //   console.log(e.target);
+  //   console.log(name)
+  //   setFormData({ ...formData, [name]: value });
+  // };
 
   return (
     <ScrollView>
@@ -47,54 +53,76 @@ const AddHospitalizationPage = () => {
           <TextInput
             style={styles.textInput}
             placeholder="Reason"
-            // value={formData.name}
-            onChange={handleChange}
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                reason: text,
+              })
+            }
           />
           <TextInput
             style={styles.textInput}
             placeholder="Treatment"
-            // value={formData.name}
-            onChange={handleChange}
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                treatment: text,
+              })
+            }
           />
           <TextInput
             style={styles.textInput}
             placeholder="Joined Date"
-            // value={formData.name}
-            onChange={handleChange}
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                joinedDate: text,
+              })
+            }
           />
 
           <TextInput
             style={styles.textInput}
-            name="date"
             placeholder="Joined Time"
-            // value={
-            //     formData.date
-            // }
-            onChange={handleChange}
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                joinedTime: text,
+              })
+            }
           />
 
           <TextInput
             style={styles.textInput}
-            name="procedure"
             placeholder="Discharge Date"
-            // value={formData.procedure}
-            onChange={handleChange}
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                dischargeDate: text,
+              })
+            }
           />
 
           <TextInput
             style={styles.textInput}
-            name="result"
             placeholder="Discharge Time"
-            //   value={formData.result}
-            onChange={handleChange}
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                dischargeTime: text,
+              })
+            }
           />
 
           <TextInput
             style={styles.textInput}
-            name="treatment"
             placeholder="Name of Hosipital"
-            //   value={formData.treatment}
-            onChange={handleChange}
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                nameOfHospital: text,
+              })
+            }
           />
 
           <TouchableOpacity style={styles.button} onPress={() => {}}>

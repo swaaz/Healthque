@@ -91,26 +91,34 @@ const AddSurgeryPage = () => {
         <TextInput
           style={styles.textInput}
           placeholder="Surgery Name"
-          // value={formData.name}
-          onChange={handleChange}
+          onChangeText={(text) =>
+            setFormData({
+              ...formData,
+              surgeryName: text,
+            })
+          }
         />
 
         <TextInput
           style={styles.textInput}
-          name="date"
           placeholder="Procedure"
-          // value={
-          //     formData.date
-          // }
-          onChange={handleChange}
+          onChangeText={(text) =>
+            setFormData({
+              ...formData,
+              procedure: text,
+            })
+          }
         />
 
         <TextInput
           style={styles.textInput}
-          name="procedure"
           placeholder="Date of Surgery"
-          // value={formData.procedure}
-          onChange={handleChange}
+          onChangeText={(text) =>
+            setFormData({
+              ...formData,
+              date: text,
+            })
+          }
         />
 
         <View style={styles.buttonGroup}>
@@ -127,7 +135,12 @@ const AddSurgeryPage = () => {
           name="treatment"
           placeholder="Complication"
           //   value={formData.treatment}
-          onChange={handleChange}
+          onChangeText={(text) =>
+            setFormData({
+              ...formData,
+              treatment: text,
+            })
+          }
         />
 
         <TouchableOpacity style={styles.button} onPress={() => {}}>
