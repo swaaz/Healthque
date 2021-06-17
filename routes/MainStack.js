@@ -17,6 +17,7 @@ import AddRedFlagsPage from '../screens/AddRedFlagsPage'
 import AddGaitPage from '../screens/AddGaitPage'
 import AddDeformitiesPage from '../screens/AddDeformitiesPage'
 import SurgeryHistoryPage from '../screens/SurgeryHistoryPage'
+import VaccineHistoryPage from '../screens/VaccineHistoryPage'
 
 
 const screens = {
@@ -118,6 +119,12 @@ const screens = {
 	},
 	SurgeryHistoryPage: {
 		screen: SurgeryHistoryPage,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+	VaccineHistoryPage: {
+		screen: VaccineHistoryPage,
 		navigationOptions: {
 			headerShown: false
 		}
