@@ -16,6 +16,7 @@ import AddGeneralInfoPage from '../screens/AddGeneralInfoPage'
 import AddRedFlagsPage from '../screens/AddRedFlagsPage'
 import AddGaitPage from '../screens/AddGaitPage'
 import AddDeformitiesPage from '../screens/AddDeformitiesPage'
+import SurgeryHistoryPage from '../screens/SurgeryHistoryPage'
 
 
 const screens = {
@@ -111,6 +112,12 @@ const screens = {
 	},
 	AddDeformitiesPage: {
 		screen: AddDeformitiesPage,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+	SurgeryHistoryPage: {
+		screen: SurgeryHistoryPage,
 		navigationOptions: {
 			headerShown: false
 		}
