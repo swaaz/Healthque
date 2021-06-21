@@ -97,7 +97,7 @@ const VaccineHistoryPage = (props) => {
               })}
             </View>
           ) : (
-            <Text style={styles.altText}>No Previous surgery data</Text>
+            <Text style={styles.altText}>No Previous Vaccination data</Text>
           )}
         </View>
       </View>
