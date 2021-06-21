@@ -67,7 +67,7 @@ const HospitalizationHistoryPage = (props) => {
     setHospitalList(response);
   };
 
-  useState(() => {
+  useEffect(() => {
     getHospitalization();
   });
 
