@@ -18,6 +18,8 @@ import AddGaitPage from '../screens/AddGaitPage'
 import AddDeformitiesPage from '../screens/AddDeformitiesPage'
 import SurgeryHistoryPage from '../screens/SurgeryHistoryPage'
 import VaccineHistoryPage from '../screens/VaccineHistoryPage'
+import HospitalizationHistoryPage from '../screens/HospitalizationHistoryPage'
+import MedicineHistoryPage from '../screens/MedicineHistoryPage'
 
 
 const screens = {
@@ -125,6 +127,18 @@ const screens = {
 	},
 	VaccineHistoryPage: {
 		screen: VaccineHistoryPage,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+	HospitalizationHistoryPage: {
+		screen: HospitalizationHistoryPage,
+		navigationOptions: {
+			headerShown: false
+		}
+	},
+	MedicineHistoryPage: {
+		screen: MedicineHistoryPage,
 		navigationOptions: {
 			headerShown: false
 		}
