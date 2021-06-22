@@ -7,54 +7,12 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
-  TouchableWithoutFeedback,
+  ScrollView,
 } from "react-native";
 
 import NameCard from "../components/NameCard";
 
-const RadioButton = (props) => {
-  return (
-    <View
-      style={{
-        flexDirection: "row",
-        alignContent: "center",
-        alignItems: "center",
-        marginTop: 30,
-        marginRight: 10,
-      }}
-    >
-      <View
-        style={[
-          {
-            height: 24,
-            width: 24,
-            borderRadius: 12,
-            borderWidth: 2,
-            borderColor: "#000",
-            alignItems: "center",
-            justifyContent: "center",
-            marginRight: 5,
-          },
-          props.style,
-        ]}
-      >
-        {props.selected && (
-          <View
-            style={{
-              height: 12,
-              width: 12,
-              borderRadius: 6,
-              backgroundColor: "#000",
-            }}
-          />
-        )}
-      </View>
-      <Text style={{ fontSize: 20 }}>{props.text}</Text>
-    </View>
-  );
-};
-
-const AddSurgeryPage = () => {
+const AddGaitPage = () => {
   const form = {
     name: "",
     date: "",
@@ -72,8 +30,6 @@ const AddSurgeryPage = () => {
     // setFormData({ ...formData, [name]: value });
   };
 
-  const [option, setOption] = useState(false);
-
   return (
     <View style={styles.container}>
       <NameCard
@@ -81,66 +37,41 @@ const AddSurgeryPage = () => {
         name="Swasthik Shetty"
       />
 
+      <Image
+        style={styles.Img}
+        source={require("../assets/vectors/girlStanding.png")}
+      />
+
       <View style={styles.form}>
         <View>
-          {" "}
           {/* <Image source={{ uri: "" }} /> */}
-          <Text style={styles.title}>Surgery</Text>
+          <Text style={styles.title}>Gait</Text>
         </View>
 
         <TextInput
           style={styles.textInput}
-          placeholder="Surgery Name"
-          onChangeText={(text) =>
-            setFormData({
-              ...formData,
-              surgeryName: text,
-            })
-          }
+          name="date"
+          placeholder="Test"
+          // value={
+          //     formData.date
+          // }
+          onChange={handleChange}
         />
 
         <TextInput
           style={styles.textInput}
-          placeholder="Procedure"
-          onChangeText={(text) =>
-            setFormData({
-              ...formData,
-              procedure: text,
-            })
-          }
+          name="procedure"
+          placeholder="Normal/ Abnormal"
+          // value={formData.procedure}
+          onChange={handleChange}
         />
 
         <TextInput
           style={styles.textInput}
-          placeholder="Date of Surgery"
-          onChangeText={(text) =>
-            setFormData({
-              ...formData,
-              date: text,
-            })
-          }
-        />
-
-        <View style={styles.buttonGroup}>
-          <TouchableOpacity onPress={() => setOption(!option)}>
-            <RadioButton selected={option} text="Successful" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => setOption(!option)}>
-            <RadioButton selected={option} text="Unsuccessful" />
-          </TouchableOpacity>
-        </View>
-
-        <TextInput
-          style={styles.textInput}
-          name="treatment"
-          placeholder="Complication"
-          //   value={formData.treatment}
-          onChangeText={(text) =>
-            setFormData({
-              ...formData,
-              treatment: text,
-            })
-          }
+          name="result"
+          placeholder="Type of abnormal gait"
+          //   value={formData.result}
+          onChange={handleChange}
         />
 
         <TouchableOpacity style={styles.button} onPress={() => {}}>
@@ -151,7 +82,7 @@ const AddSurgeryPage = () => {
   );
 };
 
-export default AddSurgeryPage;
+export default AddGaitPage;
 
 const styles = StyleSheet.create({
   container: {
@@ -175,7 +106,7 @@ const styles = StyleSheet.create({
   textInput: {
     height: 56,
 
-    marginTop: 40,
+    marginTop: 15,
     width: 280,
 
     // fontFamily: 'Poppins',
@@ -194,6 +125,7 @@ const styles = StyleSheet.create({
     color: "white",
     // bottom: 100,
     fontWeight: "700",
+    marginTop: 50,
   },
   button: {
     flexDirection: "row",
@@ -214,7 +146,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
 
-  buttonGroup: {
-    flexDirection: "row",
+  Img: {
+    width: "100%",
+    height: "40%",
   },
 });

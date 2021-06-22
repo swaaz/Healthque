@@ -7,115 +7,159 @@ import {
   Image,
   TextInput,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 
 import NameCard from "../components/NameCard";
 
-const AddSurgeryPage = () => {
+/**
+ * This component renders the vaccinate page
+ */
+const AddVaccinePage = () => {
   const form = {
-    name: "",
-    date: "",
-    procedure: "",
-    result: "",
-    treatment: "",
+    nameOfVaccine: "",
+    route: "",
+    dateAdmin: "",
+    quantityOfDose: "",
+    numDose: "",
+    dateSecondDose: "",
+    dateThirdDose: "",
+    boosterDose: "",
+    validity: "",
   };
   const [formData, setFormData] = useState(form);
 
-  const handleChange = (e) => {
-    // const name = e.target.name;
-    // const value = e.target.value;
-    // console.log(e.target);
-    // console.log(name)
-    // setFormData({ ...formData, [name]: value });
-  };
+  useEffect(() => {
+    console.log(formData);
+  });
+
+  //   const handleChange = (e) => {
+  //     const name = e.target.name;
+  //     const value = e.target.value;
+  //     console.log(e.target);
+  //     console.log(name)
+  //     setFormData({ ...formData, [name]: value });
+  //   };
 
   return (
-    <View style={styles.container}>
-      <NameCard
-        imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
-        name="Swasthik Shetty"
-      />
+    <ScrollView>
+      <View style={styles.container}>
+        <NameCard
+          imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
+          name="Swasthik Shetty"
+        />
 
-      <View style={styles.form}>
-        <View>
-          <Image source={{ uri: "" }} />
-          <Text style={styles.title}>Vaccine</Text>
+        <View style={styles.form}>
+          <View>
+            {/* <Image source={{ uri: "" }} /> */}
+            <Text style={styles.title}>Vaccine</Text>
+          </View>
+
+          <TextInput
+            style={styles.textInput}
+            placeholder="Name of Vaccine"
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                nameOfVaccine: text,
+              })
+            }
+          />
+          <TextInput
+            style={styles.textInput}
+            placeholder="Route"
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                route: text,
+              })
+            }
+          />
+          <TextInput
+            style={styles.textInput}
+            placeholder="Date of Administration"
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                dateAdmin: text,
+              })
+            }
+          />
+          <TextInput
+            style={styles.textInput}
+            placeholder="Quantity of Dose"
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                quantityOfDose: text,
+              })
+            }
+          />
+          <TextInput
+            style={styles.textInput}
+            placeholder="No. of Dose"
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                numDose: text,
+              })
+            }
+          />
+
+          <TextInput
+            style={styles.textInput}
+            placeholder="Date of Second Dose"
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                dateSecondDose: text,
+              })
+            }
+          />
+
+          <TextInput
+            style={styles.textInput}
+            placeholder="Date of Third Dose"
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                dateThirdDose: text,
+              })
+            }
+          />
+
+          <TextInput
+            style={styles.textInput}
+            placeholder="Booster dose with date"
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                boosterDose: text,
+              })
+            }
+          />
+
+          <TextInput
+            style={styles.textInput}
+            placeholder="Validity"
+            onChangeText={(text) =>
+              setFormData({
+                ...formData,
+                validity: text,
+              })
+            }
+          />
+
+          <TouchableOpacity style={styles.button} onPress={() => {}}>
+            <Text style={styles.buttonTitle}>Add</Text>
+          </TouchableOpacity>
         </View>
-
-        <TextInput
-          style={styles.textInput}
-          placeholder="Name of Vaccine"
-          // value={formData.name}
-          onChange={handleChange}
-        />
-        <TextInput
-          style={styles.textInput}
-          placeholder="Route"
-          // value={formData.name}
-          onChange={handleChange}
-        />
-        <TextInput
-          style={styles.textInput}
-          placeholder="Date of Administration"
-          // value={formData.name}
-          onChange={handleChange}
-        />
-        <TextInput
-          style={styles.textInput}
-          placeholder="Quantity of Dose"
-          // value={formData.name}
-          onChange={handleChange}
-        />
-        <TextInput
-          style={styles.textInput}
-          placeholder="No. of Dose"
-          // value={formData.name}
-          onChange={handleChange}
-        />
-
-        <TextInput
-          style={styles.textInput}
-          name="date"
-          placeholder="Date of Second Dose"
-          // value={
-          //     formData.date
-          // }
-          onChange={handleChange}
-        />
-
-        <TextInput
-          style={styles.textInput}
-          name="procedure"
-          placeholder="Date of Third Dose"
-          // value={formData.procedure}
-          onChange={handleChange}
-        />
-
-        <TextInput
-          style={styles.textInput}
-          name="result"
-          placeholder="Booster dose with date"
-          //   value={formData.result}
-          onChange={handleChange}
-        />
-
-        <TextInput
-          style={styles.textInput}
-          name="treatment"
-          placeholder="Validity"
-          //   value={formData.treatment}
-          onChange={handleChange}
-        />
-
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
-          <Text style={styles.buttonTitle}>Add</Text>
-        </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
-export default AddSurgeryPage;
+export default AddVaccinePage;
 
 const styles = StyleSheet.create({
   container: {
@@ -132,14 +176,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#5BA2F4",
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
   },
 
   textInput: {
     height: 56,
 
-    marginTop: 15,
+    marginTop: 40,
     width: 280,
 
     // fontFamily: 'Poppins',
@@ -156,7 +200,7 @@ const styles = StyleSheet.create({
     // position: 'absolute',
     fontSize: 30,
     color: "white",
-    bottom: 100,
+    // bottom: 100,
     fontWeight: "700",
     marginTop: 50,
   },
