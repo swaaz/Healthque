@@ -26,6 +26,12 @@ import PatientHomePage from '../screens/PatientHomePage';
 
 
 const screens = {
+	LandingPage : {
+        screen : LandingPage,
+        navigationOptions : {
+            headerShown : false
+        }
+    },
     PatientHomePage : {
         screen : PatientHomePage,
         navigationOptions : {
@@ -62,12 +68,6 @@ const screens = {
             headerShown : false
         }
     },
-    LandingPage : {
-        screen : LandingPage,
-        navigationOptions : {
-            headerShown : false
-        }
-    },
     LandingOption : {
         screen : LandingOption,
         navigationOptions : {
@@ -98,12 +98,7 @@ const screens = {
 			headerShown: false
 		}
 	},
-	LandingPage: {
-		screen: LandingPage,
-		navigationOptions: {
-			headerShown: false
-		}
-	},
+	
 	LandingOption: {
 		screen: LandingOption,
 		navigationOptions: {

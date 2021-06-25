@@ -3,8 +3,11 @@ import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import AddNumber from '../components/AddNumber';
 import AddOTP from '../components/AddOTP'
 
-const PatientInitial = () => {
+const PatientInitial = ({navigation}) => {
     const [isOtpSent, setIsOtpSent] = useState(false);
+    const onSubmit =() => {
+        navigation.navigate('PatientHomePage');
+    }
     return (
         <SafeAreaView>
             <View style={styles.container}>
@@ -16,7 +19,7 @@ const PatientInitial = () => {
                     <Text style={styles.title}>Login as Patient</Text>
                     {
                         isOtpSent?
-                        <AddOTP/>
+                        <AddOTP navigation={onSubmit}/>
                         :
                         <AddNumber setIsOtpSent={setIsOtpSent} />
                     }

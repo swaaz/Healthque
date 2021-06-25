@@ -3,8 +3,11 @@ import { Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, Vie
 import AddNumber from '../components/AddNumber'
 import AddOTP from '../components/AddOTP';
 
-const DoctorInitial = () => {
+const DoctorInitial = ({navigation}) => {
     const [isOtpSent, setIsOtpSent] = useState(false);
+    const onSubmit = () => {
+        navigation.navigate('DoctorHomePage');
+    }
     return (
         <SafeAreaView>
             <View style={styles.container}>
@@ -16,7 +19,7 @@ const DoctorInitial = () => {
                     <Text style={styles.title}>Login as Doctor</Text>
                     {
                         isOtpSent?
-                        <AddOTP/>
+                        <AddOTP navigation={onSubmit}/>
                         :
                         <AddNumber setIsOtpSent={setIsOtpSent} />
                     }

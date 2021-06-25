@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
-const LandingOption = () => {
+const LandingOption = ({navigation}) => {
     return (
         <SafeAreaView>
             <View style={styles.container}>
@@ -10,7 +10,9 @@ const LandingOption = () => {
                     style={styles.vector}
                 />
                <View style={styles.options}>
-                   <TouchableOpacity>
+                   <TouchableOpacity
+                    onPress={()=> navigation.navigate('DoctorInitial')}
+                    >
                        <View style={styles.button}>
                             <Image
                                 source={require('../assets/icons/doctor.png')}
@@ -24,7 +26,9 @@ const LandingOption = () => {
                        <Text style={styles.or}>OR</Text>
                        <View style={styles.line} />
                    </View>
-                   <TouchableOpacity>
+                   <TouchableOpacity
+                    onPress={()=> navigation.navigate('PatientInitial')}
+                   >
                        <View style={styles.button}>
                             <Image
                                 source={require('../assets/icons/patient.png')}

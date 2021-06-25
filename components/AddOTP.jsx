@@ -1,11 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native'
 
-const AddOTP = () => {
+const AddOTP = (props) => {
     return (
         <>
             <TextInput  style={styles.input} placeholder={'Enter OTP'} />
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity onPress={props.navigation} style={styles.button}>
                 <Text style={styles.submit}>Submit</Text>
             </TouchableOpacity>
         </>
