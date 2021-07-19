@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
-const DoctorHomePage = () => {
+const DoctorHomePage = ({navigation}) => {
     return (
         <SafeAreaView>
             <View style={styles.container}>
@@ -34,7 +34,7 @@ const DoctorHomePage = () => {
                 <Text style={styles.degree}>MBBS</Text>
 
                 <View style={styles.footer}>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity onPress={() => navigation.navigate('')} style={styles.button}>
                         <Image
                             source={require('../assets/icons/plus.png')}
                             style={styles.plus}

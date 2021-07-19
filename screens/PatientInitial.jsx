@@ -1,10 +1,43 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import AddNumber from '../components/AddNumber';
 import AddOTP from '../components/AddOTP'
+import firebase from '../firebase' ;
+const PatientInitial = ({navigation}) => {
 
-const PatientInitial = () => {
+    const { auth } = firebaseSetup();
+
     const [isOtpSent, setIsOtpSent] = useState(false);
+    const [confirm, setConfirm] = useState(null);
+    const [code, setCode] = useState('');
+
+    useEffect(() => {
+        const unSubscribe = auth.onAuthStateChanged((authUser) => {
+            console.log(authUser);
+            if(authUser){
+                navigation.navigate('PatientHome');
+            }
+        })
+    });
+            
+    
+    const onAddNumber = async(number) => {
+        console.log(number);
+        const confirmation = await auth().signInWithPhoneNumber(number);
+        setConfirm(confirmation);
+        setIsOtpSent(true);
+    }
+
+    const onSubmit = async(otp) => {
+        try{
+            const res = await confirm.confirm(otp);
+            console.log(res);
+        }
+        catch(err){
+            alert(JSON.stringify(err));
+        }
+    }
+
     return (
         <SafeAreaView>
             <View style={styles.container}>
@@ -16,9 +49,9 @@ const PatientInitial = () => {
                     <Text style={styles.title}>Login as Patient</Text>
                     {
                         isOtpSent?
-                        <AddOTP/>
+                        <AddOTP navigation={onSubmit}/>
                         :
-                        <AddNumber setIsOtpSent={setIsOtpSent} />
+                        <AddNumber onAddNumber={onAddNumber} />
                     }
                 </View>
             </View>

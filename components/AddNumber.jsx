@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native'
 
 const AddNumber = (props) => {
+    const [number, setNumber] = useState();
     return (
         <>
-            <TextInput  style={styles.input} placeholder={'Enter Contact Number'} />
+            <TextInput value={number} onChangeText={val =>setNumber(val)} style={styles.input} placeholder={'Enter Contact Number'} />
             <TouchableOpacity
             style={styles.button}
-            onPress={() => props.setIsOtpSent(true)}
+            onPress={() => props.onAddNumber(number)}
             >
                 <Text style={styles.submit}>Submit</Text>
             </TouchableOpacity>

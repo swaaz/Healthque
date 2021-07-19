@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 
-const LandingPage = () => {
+const LandingPage = ({navigation}) => {
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            navigation.navigate('LandingOption')
+          }, 3000);
+    }, [])
     return (
         <SafeAreaView>
             <View style={styles.container}>
