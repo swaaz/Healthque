@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native'
 
 const AddOTP = (props) => {
+    const [otp, setOtp] = useState();
     return (
         <>
-            <TextInput  style={styles.input} placeholder={'Enter OTP'} />
-            <TouchableOpacity onPress={props.navigation} style={styles.button}>
+            <TextInput value={otp} onChangeText={val => setOtp(val)}   style={styles.input} placeholder={'Enter OTP'} />
+            <TouchableOpacity onPress={() => props.navigation(otp)} style={styles.button}>
                 <Text style={styles.submit}>Submit</Text>
             </TouchableOpacity>
         </>
