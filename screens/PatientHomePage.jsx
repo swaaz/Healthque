@@ -1,8 +1,13 @@
 import React from 'react';
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import RedFlag from '../components/RedFlag';
+import {auth} from '../firebase'
+const PatientHomePage = ({navigation}) => {
+    const signOut = () => {
+        auth.signOut()
+        .then(()=> navigation.navigate('LandingOption') )
+    }
 
-const PatientHomePage = () => {
     return (
         <SafeAreaView>
             <View style={styles.container}>
@@ -33,7 +38,7 @@ const PatientHomePage = () => {
                 </View>
 
                 <View style={styles.card}>
-                    <TouchableOpacity style={styles.button}>
+                    <TouchableOpacity onPress={signOut} style={styles.button}>
                         <Image
                             source={require('../assets/icons/plus.png')}
                             style={styles.plus}
@@ -112,7 +117,6 @@ const PatientHomePage = () => {
                     <Text style={styles.title}>Red Flags</Text>
                     <View style={styles.labels}>
                         <RedFlag label={'swaaz'} />
-
                         <RedFlag label={'swaaz'} />
                         <RedFlag label={'swaaz'} />
                         <RedFlag label={'swaaz'} />

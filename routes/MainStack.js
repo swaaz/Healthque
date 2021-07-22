@@ -26,6 +26,7 @@ import PatientHomePage from '../screens/PatientHomePage';
 
 
 const screens = {
+	
 	LandingPage : {
         screen : LandingPage,
         navigationOptions : {
@@ -74,12 +75,7 @@ const screens = {
             headerShown : false
         }
     },
-    PatientInitial : {
-        screen : PatientInitial,
-        navigationOptions : {
-            headerShown : false
-        }
-    },
+    
     PatientSignUp: {
 		screen: PatientSignUp,
 		navigationOptions: {
