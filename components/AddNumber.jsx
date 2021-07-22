@@ -1,31 +1,39 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native'
 
 const AddNumber = (props) => {
-    const [number, setNumber] = useState();
+    const [cred, setCred] = useState({
+        mail : '',
+        password: ''
+    });
     return (
-        <>
-            <TextInput value={number} onChangeText={val =>setNumber(val)} style={styles.input} placeholder={'Enter Contact Number'} />
+        <KeyboardAvoidingView style={styles.Container} behavior={'height'}>
+            <TextInput value={cred.mail} onChangeText={val =>setCred(prev => ({...prev, mail: val}))} style={styles.input} placeholder={'Email'} />
+            <TextInput secureTextEntry={true} value={cred.password} onChangeText={val =>setCred(prev => ({...prev, password: val}))} style={styles.input} placeholder={'Password'} />
             <TouchableOpacity
             style={styles.button}
-            onPress={() => props.onAddNumber(number)}
+            onPress={() => props.onSubmit(cred)}
             >
                 <Text style={styles.submit}>Submit</Text>
             </TouchableOpacity>
-        </>
+        </KeyboardAvoidingView>
     )
 }
 
 export default AddNumber;
 
 const styles = StyleSheet.create({
+    Container : {
+        width: '100%',
+        alignItems: 'center'
+    },
     input : {
         width: '60%',
         backgroundColor : 'white',
         height: 50,
         borderRadius : 10,
         paddingHorizontal : 20,
-        marginVertical : 20
+        marginVertical : 10
     },
     button : {
         width: 200,

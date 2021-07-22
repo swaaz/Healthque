@@ -1,41 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import AddNumber from '../components/AddNumber';
-import AddOTP from '../components/AddOTP'
-import firebase from '../firebase' ;
+import AddOTP from '../components/AddOTP';
+import {auth} from '../firebase'
+
+
 const PatientInitial = ({navigation}) => {
 
-    const { auth } = firebaseSetup();
-
-    const [isOtpSent, setIsOtpSent] = useState(false);
-    const [confirm, setConfirm] = useState(null);
-    const [code, setCode] = useState('');
 
     useEffect(() => {
-        const unSubscribe = auth.onAuthStateChanged((authUser) => {
-            console.log(authUser);
+        const unsubscribe = auth.onAuthStateChanged((authUser) => {
+            console.log(authUser.uid);
             if(authUser){
-                navigation.navigate('PatientHome');
+                navigation.navigate('PatientHomePage');
             }
         })
-    });
-            
-    
-    const onAddNumber = async(number) => {
-        console.log(number);
-        const confirmation = await auth().signInWithPhoneNumber(number);
-        setConfirm(confirmation);
-        setIsOtpSent(true);
-    }
 
-    const onSubmit = async(otp) => {
-        try{
-            const res = await confirm.confirm(otp);
-            console.log(res);
-        }
-        catch(err){
-            alert(JSON.stringify(err));
-        }
+        return unsubscribe;
+    },[]);
+
+    const onSubmit = (cred) => {
+        auth.signInWithEmailAndPassword(cred.mail, cred.password)
+        .catch(err => alert(err.message));
     }
 
     return (
@@ -47,12 +33,8 @@ const PatientInitial = ({navigation}) => {
                 />
                 <View style={styles.form}>
                     <Text style={styles.title}>Login as Patient</Text>
-                    {
-                        isOtpSent?
-                        <AddOTP navigation={onSubmit}/>
-                        :
-                        <AddNumber onAddNumber={onAddNumber} />
-                    }
+                        <AddNumber onSubmit={onSubmit} />
+                    <TouchableOpacity onPress={() => navigation.navigate('PatientSignUp')}><Text style={styles.signUpLink}>Don't have an account? Register</Text></TouchableOpacity>
                 </View>
             </View>
         </SafeAreaView>
@@ -84,7 +66,10 @@ const styles = StyleSheet.create({
         letterSpacing : 2,
         marginVertical : 20
     },
-    
+    signUpLink : {
+        marginTop: 20,
+        color: 'white',
+    }
 
 
 })
