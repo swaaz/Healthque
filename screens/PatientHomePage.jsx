@@ -1,13 +1,40 @@
 import React from 'react';
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import RedFlag from '../components/RedFlag';
-import {auth} from '../firebase'
+import {auth, db } from '../firebase';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateProfile } from '../state/actionCreators';
+import * as firebase from 'firebase'
+
 const PatientHomePage = ({navigation}) => {
+
+    // const  state = useSelector((state) => state.patient);
+    const dispatch = useDispatch();
+
     const signOut = () => {
         auth.signOut()
         .then(()=> navigation.navigate('LandingOption') )
     }
 
+    const onUpdate = () => {
+        
+            console.log('ptrssed')
+
+            db.collection('patients').doc('hEwopOnPibUJPK2XRHMa')
+            .update(
+            {
+                redFlags : firebase.firestore.FieldValue.arrayUnion(
+                    {
+                        title : 'fg',
+                        where: 'sgh'
+                    }
+                )
+            }
+            )
+            .then(() => console.log('data ipdated') )
+            .catch(err => alert(err.message))
+        
+    }
     return (
         <SafeAreaView>
             <View style={styles.container}>
@@ -51,7 +78,9 @@ const PatientHomePage = ({navigation}) => {
                             horizontal
                             showsHorizontalScrollIndicator={false}
                         >
-                            <TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate('SurgeryHistoryPage')}
+                            >
                                 <View style={styles.buttonHistory}>
                                     <Image
                                         source={require('../assets/icons/surgery.png')}
@@ -60,13 +89,15 @@ const PatientHomePage = ({navigation}) => {
                                     <Text style={styles.buttonTitle}>Surgery</Text>
                                 </View>
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={onUpdate}
+                            >
                                 <View style={styles.buttonHistory}>
                                     <Image
                                         source={require('../assets/icons/surgery.png')}
                                         style={styles.icons}
                                     />
-                                    <Text style={styles.buttonTitle}>Surgery</Text>
+                                    <Text style={styles.buttonTitle}>addd</Text>
                                 </View>
                             </TouchableOpacity>
 

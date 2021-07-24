@@ -1,71 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { useSelector } from "react-redux";
 import NameCard from "../components/NameCard";
 import SurgeryCard from "../components/SurgeryCard";
 
-const SurgeryHistoryPage = (props) => {
-  const [surgeryList, setSurgeryList] = useState([]);
+const SurgeryHistoryPage = () => {
+  const surgeryList = useSelector((state) => state.patient.medicalRecords.surgery)
 
-  /**
-   * Gets the history list of surgery data
-   */
-  const getSurgery = async () => {
-    const response = [
-      {
-        key: 1,
-        date: "05/01/2005",
-        procName: "Brain Biopsy",
-        surgeryType: "Biopsy",
-        surgeryArea: "Brain",
-        detailsURI: "https://linktodowloadpdf.test",
-        docName: "Suhan",
-      },
-      {
-        key: 2,
-
-        date: "05/01/2005",
-        procName: "Brain Biopsy",
-        surgeryType: "Biopsy",
-        surgeryArea: "Brain",
-        detailsURI: "https://linktodowloadpdf.test",
-      },
-      {
-        key: 3,
-
-        date: "05/01/2005",
-        procName: "Brain Biopsy",
-        surgeryType: "Biopsy",
-        surgeryArea: "Brain",
-        detailsURI: "https://linktodowloadpdf.test",
-        docName: "Brian",
-      },
-      {
-        key: 4,
-
-        date: "05/01/2005",
-        procName: "Brain Biopsy",
-        surgeryType: "Biopsy",
-        surgeryArea: "Brain",
-        detailsURI: "https://linktodowloadpdf.test",
-      },
-      {
-        key: 5,
-
-        date: "05/01/2005",
-        procName: "Brain Biopsy",
-        surgeryType: "Biopsy",
-        surgeryArea: "Brain",
-        detailsURI: "https://linktodowloadpdf.test",
-      },
-    ];
-    setSurgeryList(response);
-    // setSurgeryList([]);
-  };
-
-  useState(() => {
-    getSurgery();
-  });
+  
 
   return (
     <ScrollView style={styles.scrollView}>

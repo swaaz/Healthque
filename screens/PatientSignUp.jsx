@@ -10,26 +10,43 @@ const PatientSignUp = ({navigation}) => {
         height: '',
         location: '',
         email: '',
-        password: ''
+        password: '',
     });
 
     const onSubmit = async() => {
-        console.log(profile)
+        // console.log(profile)
         await auth.createUserWithEmailAndPassword(profile.email, profile.password)
         .then((authUser) => {
-            console.log(authUser.uid)
+            authUser.user.updateProfile({
+                displayName: 'patient'
+            })
+            .then((res) => console.log('updated'))
+            .catch((err) => console.log(err))
+
             db.collection('patients').doc(authUser.uid)
             .set({
                 name: profile.name,
                 dateOfBirth : profile.dateOfBirth,
                 gender: profile.gender,
-                weight: profile.weight,
-                height: profile.height,
-                location: profile.location
+                location: profile.location,
+                medicalRecords : {
+                    surgery : [],
+                    medication : [],
+                    healthIssue : [],
+                    hospitalized : [],
+                    vaccination : [],
+                    gait: [],
+                    allergy : [],
+                    deformities : [],
+                    redFlags : [],
+                    general : {
+                        weight: profile.weight,
+                        height: profile.height,
+                    }
+                }
             })
             .then(() => navigation.navigate('PatientInitial') )
             .catch(err => alert(err.message))
-            
         })
         .catch((error) => alert(error.message));
     }

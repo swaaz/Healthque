@@ -1,13 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import AddNumber from '../components/AddNumber'
-import AddOTP from '../components/AddOTP';
+import {auth} from '../firebase'
+
 
 const DoctorInitial = ({navigation}) => {
-    const [isOtpSent, setIsOtpSent] = useState(false);
-    const onSubmit = () => {
-        navigation.navigate('DoctorHomePage');
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((authUser) => {
+            if(authUser && authUser.displayName === 'doctor'){
+                navigation.navigate('DoctorHomePage');
+            }
+        })
+        return unsubscribe;
+    },[]);
+
+    const onSubmit = (cred) => {
+        auth.signInWithEmailAndPassword(cred.mail, cred.password)
+        .catch(err => alert(err.message));
     }
+
     return (
         <SafeAreaView>
             <View style={styles.container}>
@@ -17,12 +28,9 @@ const DoctorInitial = ({navigation}) => {
                 />
                 <View style={styles.form}>
                     <Text style={styles.title}>Login as Doctor</Text>
-                    {
-                        isOtpSent?
-                        <AddOTP navigation={onSubmit}/>
-                        :
-                        <AddNumber setIsOtpSent={setIsOtpSent} />
-                    }
+                        <AddNumber onSubmit={onSubmit} />
+                    <TouchableOpacity onPress={() => navigation.navigate('DoctorSignUp')}><Text style={styles.signUpLink}>Don't have an account? Register</Text></TouchableOpacity>
+
                 </View>
             </View>
         </SafeAreaView>
@@ -54,7 +62,10 @@ const styles = StyleSheet.create({
         letterSpacing : 2,
         marginVertical : 20
     },
-    
+    signUpLink : {
+        marginTop: 20,
+        color: 'white',
+    }
 
 
 })
