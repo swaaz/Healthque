@@ -10,8 +10,8 @@ const PatientInitial = ({navigation}) => {
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((authUser) => {
-            console.log(authUser.uid);
-            if(authUser){
+            // console.log(authUser)
+            if(authUser && authUser.displayName === 'patient'){
                 navigation.navigate('PatientHomePage');
             }
         })
