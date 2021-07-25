@@ -4,7 +4,7 @@ import { auth, db } from '../firebase'
 const PatientSignUp = ({navigation}) => {
     const [profile, setProfile] = useState({
         name: '',
-        dateOfBirth : '',
+        age : '',
         gender : '',
         weight: '',
         height: '',
@@ -22,11 +22,11 @@ const PatientSignUp = ({navigation}) => {
             })
             .then((res) => console.log('updated'))
             .catch((err) => console.log(err))
-
-            db.collection('patients').doc(authUser.uid)
+            console.log(authUser.user.email)
+            db.collection('patients').doc(authUser.user.email)
             .set({
                 name: profile.name,
-                dateOfBirth : profile.dateOfBirth,
+                age : profile.age,
                 gender: profile.gender,
                 location: profile.location,
                 medicalRecords : {
@@ -66,7 +66,7 @@ const PatientSignUp = ({navigation}) => {
                         <TextInput onChangeText={(val) => setProfile(prev=> ({...prev, name: val}))} value={profile.name} style={styles.input} placeholderTextColor={'white'} placeholder={'Full Name'} />
                         <TextInput onChangeText={(val) => setProfile(prev=> ({...prev, email: val}))} value={profile.email} style={styles.input} placeholderTextColor={'white'} placeholder={'Email'} />
                         <TextInput secureTextEntry={true} onChangeText={(val) => setProfile(prev=> ({...prev, password: val}))} value={profile.password} style={styles.input} placeholderTextColor={'white'} placeholder={'Password'} />
-                        <TextInput onChangeText={(val) => setProfile(prev=> ({...prev, dateOfBirth: val}))} value={profile.dateOfBirth} style={styles.input} placeholderTextColor={'white'} placeholder={'Date of Birth'} />
+                        <TextInput onChangeText={(val) => setProfile(prev=> ({...prev, age: val}))} value={profile.age} style={styles.input} placeholderTextColor={'white'} placeholder={'Age'} />
                         <TextInput onChangeText={(val) => setProfile(prev=> ({...prev, gender: val}))} value={profile.gender} style={styles.input} placeholderTextColor={'white'} placeholder={'Gender'} />
                         <TextInput onChangeText={(val) => setProfile(prev=> ({...prev, weight: val}))} value={profile.weight} style={styles.input} placeholderTextColor={'white'} placeholder={'Weight'} />
                         <TextInput onChangeText={(val) => setProfile(prev=> ({...prev, height: val}))} value={profile.height} style={styles.input} placeholderTextColor={'white'} placeholder={'Height'} />

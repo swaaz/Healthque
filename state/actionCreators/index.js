@@ -4,3 +4,10 @@ export const updateProfile = (profile) => {
         payload : profile
     }
 }
+
+export const updateState = (state) => {
+    return {
+        type: 'UPDATE_STATE',
+        payload: state
+    }
+}

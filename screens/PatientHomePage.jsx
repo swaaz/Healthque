@@ -8,7 +8,7 @@ import * as firebase from 'firebase'
 
 const PatientHomePage = ({navigation}) => {
 
-    // const  state = useSelector((state) => state.patient);
+    const  state = useSelector((state) => state.patient);
     const dispatch = useDispatch();
 
     const signOut = () => {
@@ -35,6 +35,7 @@ const PatientHomePage = ({navigation}) => {
             .catch(err => alert(err.message))
         
     }
+
     return (
         <SafeAreaView>
             <View style={styles.container}>
@@ -43,34 +44,36 @@ const PatientHomePage = ({navigation}) => {
                     style={styles.profile}
                 />
                 <View  style={styles.group}>
-                    <Text style={styles.name}>Swasthik Shetty</Text>
-                    <Text style={styles.gender}>male</Text>
+                    <Text style={styles.name}>{state.name}</Text>
+                    <Text style={styles.gender}>{state.gender}</Text>
                 </View>
 
-                <Text style={styles.location}>Mangaluru</Text>
+                <Text style={styles.location}>{state.location}</Text>
 
                 <View style={styles.row}>
                     <View style={styles.col}>
-                        <Text style={styles.digit}>20</Text>
+                        <Text style={styles.digit}>{state.age}</Text>
                         <Text style={styles.digitTitle}>Age</Text>
                     </View>
                     <View style={styles.col}>
-                        <Text style={styles.digit}>65</Text>
+                        <Text style={styles.digit}>{state.weight}</Text>
                         <Text style={styles.digitTitle}>Weight</Text>
                     </View>
                     <View style={styles.col}>
-                        <Text style={styles.digit}>5'7</Text>
+                        <Text style={styles.digit}>{state.height}</Text>
                         <Text style={styles.digitTitle}>Height</Text>
                     </View>
                 </View>
 
                 <View style={styles.card}>
-                    <TouchableOpacity onPress={signOut} style={styles.button}>
+                    {/* <TouchableOpacity onPress={signOut} style={styles.button}>
                         <Image
                             source={require('../assets/icons/plus.png')}
                             style={styles.plus}
                         />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
+
+
                     <Text style={styles.title}>History</Text>
 
                     <View style={styles.scrollRow}>
@@ -147,15 +150,13 @@ const PatientHomePage = ({navigation}) => {
 
                     <Text style={styles.title}>Red Flags</Text>
                     <View style={styles.labels}>
+                        {
+                            state.medicalRecords.redFlags.map((data,key) => <RedFlag key={key} label={data} />)
+                        }
+                        {/* <RedFlag label={'swaaz'} />
                         <RedFlag label={'swaaz'} />
-                        <RedFlag label={'swaaz'} />
-                        <RedFlag label={'swaaz'} />
-                        <RedFlag label={'swaaz'} />
-                        <RedFlag label={'swaaz'} />
-                        <RedFlag label={'swaaz'} />
-                        <RedFlag label={'swaaz'} />
-                        <RedFlag label={'swaaz'} />
-                        <RedFlag label={'swaaz'} />
+                        <RedFlag label={'swaaz'} /> */}
+                        
                     </View>
 
                     
@@ -245,7 +246,8 @@ const styles = StyleSheet.create({
         fontWeight : 'bold',
         color: 'white',
         letterSpacing : 2,
-        marginVertical : 20
+        marginVertical : 20,
+        paddingTop: 10
     },
     scrollRow : {
         width: '100%',
