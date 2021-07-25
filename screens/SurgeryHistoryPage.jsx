@@ -6,7 +6,8 @@ import NameCard from "../components/NameCard";
 import SurgeryCard from "../components/SurgeryCard";
 
 const SurgeryHistoryPage = () => {
-  const surgeryList = useSelector((state) => state.patient.medicalRecords.surgery)
+  const surgeryList = useSelector((state) => state)
+  console.log(surgeryList)
 
   
 

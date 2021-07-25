@@ -2,16 +2,20 @@ import React, { useEffect, useState } from 'react'
 import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import AddNumber from '../components/AddNumber';
 import AddOTP from '../components/AddOTP';
-import {auth} from '../firebase'
+import {auth, db} from '../firebase'
+import { useDispatch } from 'react-redux';
+import { updateState } from '../state/actionCreators';
 
 
 const PatientInitial = ({navigation}) => {
-
-
+    const dispatch = useDispatch();
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((authUser) => {
-            // console.log(authUser)
             if(authUser && authUser.displayName === 'patient'){
+                const dbValue = db.collection('patients').doc(authUser.email)
+                dbValue.onSnapshot((doc) => {
+                    dispatch(updateState(doc.data()))
+                })
                 navigation.navigate('PatientHomePage');
             }
         })
