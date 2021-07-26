@@ -97,39 +97,39 @@ const PatientHomePage = ({navigation}) => {
                             >
                                 <View style={styles.buttonHistory}>
                                     <Image
-                                        source={require('../assets/icons/surgery.png')}
+                                        source={require('../assets/icons/vaccination.png')}
                                         style={styles.icons}
                                     />
-                                    <Text style={styles.buttonTitle}>addd</Text>
+                                    <Text style={styles.buttonTitle}>Vaccination</Text>
                                 </View>
                             </TouchableOpacity>
 
                             <TouchableOpacity>
                                 <View style={styles.buttonHistory}>
                                     <Image
-                                        source={require('../assets/icons/surgery.png')}
+                                        source={require('../assets/icons/medic.png')}
                                         style={styles.icons}
                                     />
-                                    <Text style={styles.buttonTitle}>Surgery</Text>
+                                    <Text style={styles.buttonTitle}>Medication</Text>
                                 </View>
                             </TouchableOpacity>
                             <TouchableOpacity>
                                 <View style={styles.buttonHistory}>
                                     <Image
-                                        source={require('../assets/icons/surgery.png')}
+                                        source={require('../assets/icons/healthrecord.png')}
                                         style={styles.icons}
                                     />
-                                    <Text style={styles.buttonTitle}>Surgery</Text>
+                                    <Text style={styles.buttonTitle}>Health Issue</Text>
                                 </View>
                             </TouchableOpacity>
 
                             <TouchableOpacity>
                                 <View style={styles.buttonHistory}>
                                     <Image
-                                        source={require('../assets/icons/surgery.png')}
+                                        source={require('../assets/icons/hospital.png')}
                                         style={styles.icons}
                                     />
-                                    <Text style={styles.buttonTitle}>Surgery</Text>
+                                    <Text style={styles.buttonTitle}>Hospitalized</Text>
                                 </View>
                             </TouchableOpacity>
                         </ScrollView>

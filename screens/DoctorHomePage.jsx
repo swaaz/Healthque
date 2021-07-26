@@ -37,7 +37,7 @@ const DoctorHomePage = ({navigation}) => {
                 <Text style={styles.degree}>{data.degree}</Text>
 
                 <View style={styles.footer}>
-                    <TouchableOpacity onPress={() => navigation.navigate('')} style={styles.button}>
+                    <TouchableOpacity onPress={() => navigation.navigate('AddDetails')} style={styles.button}>
                         <Image
                             source={require('../assets/icons/plus.png')}
                             style={styles.plus}

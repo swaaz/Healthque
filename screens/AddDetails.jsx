@@ -1,7 +1,7 @@
 import React from 'react'
 import { Image, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 
-const AddDetails = () => {
+const AddDetails = ({navigation}) => {
     return (
        <SafeAreaView>
             <View style={styles.container}>
@@ -14,7 +14,9 @@ const AddDetails = () => {
                     <Text style={styles.title}>Add Details</Text>
 
                     <View style={styles.row}>
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('AddSurgeryPage')}
+                        >
                             <View style={styles.button}>
                                 <Image
                                     source={require('../assets/icons/surgery.png')}
@@ -24,7 +26,9 @@ const AddDetails = () => {
                             </View>
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('AddVaccinePage')}
+                        >
                             <View style={styles.button}>
                                 <Image
                                     source={require('../assets/icons/vaccination.png')}
@@ -36,7 +40,9 @@ const AddDetails = () => {
                     </View>
 
                     <View style={styles.row}>
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('AddMedicationPage')}
+                        >
                             <View style={styles.button}>
                                 <Image
                                     source={require('../assets/icons/medic.png')}
@@ -46,7 +52,9 @@ const AddDetails = () => {
                             </View>
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('AddHealthIssuesPage')}
+                        >
                             <View style={styles.button}>
                                 <Image
                                     source={require('../assets/icons/healthrecord.png')}
@@ -58,17 +66,21 @@ const AddDetails = () => {
                     </View>
 
                     <View style={styles.row}>
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('AddHospitalizationPage')}
+                        >
                             <View style={styles.button}>
                                 <Image
                                     source={require('../assets/icons/hospital.png')}
                                     style={styles.icon}
                                 />
-                                <Text style={styles.buttonName}>Hospitalised</Text>
+                                <Text style={styles.buttonName}>Hospitalized</Text>
                             </View>
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('AddGeneralInfoPage')}
+                        >
                             <View style={styles.button}>
                                 <Image
                                     source={require('../assets/icons/general.png')}
@@ -81,13 +93,18 @@ const AddDetails = () => {
                     </View>
 
                     <View style={styles.row}>
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                             onPress={() => navigation.navigate('AddAllergyPage')}
+
+                        >
                             <View style={styles.button}>
                                 <Text style={styles.buttonName}>Allergies</Text>
                             </View>
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('AddGaitPage')}
+                        >
                             <View style={styles.button}>
                                 <Text style={styles.buttonName}>Gait</Text>
                             </View>
@@ -95,13 +112,17 @@ const AddDetails = () => {
                     </View>
 
                     <View style={styles.row}>
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('AddDeformitiesPage')}
+                        >
                             <View style={styles.button}>
                                 <Text style={styles.buttonName}>Deformities</Text>
                             </View>
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity
+                             onPress={() => navigation.navigate('AddRedFlagsPage')}
+                        >
                             <View style={styles.button}>
                                 <Text style={styles.buttonName}>Red Flags</Text>
                             </View>

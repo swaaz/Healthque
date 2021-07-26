@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
 
   form: {
     width: "100%",
-    height: "100%",
+    height: "40%",
     backgroundColor: "#5BA2F4",
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
   },
 
   Img: {
-    width: "45%",
+    // width: "45%",
     height: "45%",
   },
 });
