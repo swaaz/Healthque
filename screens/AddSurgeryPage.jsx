@@ -8,13 +8,15 @@ import {
   TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  SafeAreaView,
 } from "react-native";
 
 import NameCard from "../components/NameCard";
 
 const RadioButton = (props) => {
   return (
-    <View
+    <SafeAreaView>
+      <View
       style={{
         flexDirection: "row",
         alignContent: "center",
@@ -51,6 +53,7 @@ const RadioButton = (props) => {
       </View>
       <Text style={{ fontSize: 20 }}>{props.text}</Text>
     </View>
+    </SafeAreaView>
   );
 };
 
@@ -64,13 +67,9 @@ const AddSurgeryPage = () => {
   };
   const [formData, setFormData] = useState(form);
 
-  const handleChange = (e) => {
-    // const name = e.target.name;
-    // const value = e.target.value;
-    // console.log(e.target);
-    // console.log(name)
-    // setFormData({ ...formData, [name]: value });
-  };
+  const onSubmit = () => {
+
+  }
 
   const [option, setOption] = useState(false);
 
@@ -83,7 +82,7 @@ const AddSurgeryPage = () => {
 
       <View style={styles.form}>
         <View>
-          {" "}
+          {/* {" "} */}
           {/* <Image source={{ uri: "" }} /> */}
           <Text style={styles.title}>Surgery</Text>
         </View>
@@ -143,7 +142,7 @@ const AddSurgeryPage = () => {
           }
         />
 
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity style={styles.button} onPress={onSubmit}>
           <Text style={styles.buttonTitle}>Add</Text>
         </TouchableOpacity>
       </View>
