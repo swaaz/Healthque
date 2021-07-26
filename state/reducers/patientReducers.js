@@ -21,46 +21,6 @@ let initialState = {
         }
     }
 }
-// auth.onAuthStateChanged((authUser) => {
-//     if(authUser && authUser.displayName === 'patient'){
-//         console.log(authUser.email)
-//         const dbValue = db.collection('patients').doc(authUser.email)
-
-//         dbValue.onSnapshot((doc) => {
-//             // console.log(doc.data())
-//             if(doc.exits){
-//                 const data = doc.data();
-//                 // console.log(data)
-                
-//                 initialState = {
-//                     name: data.name,
-//                     gender: data.gender,
-//                     location : data.location,
-//                     dateOfBirth: data.dateOfBirth,
-//                     medicalRecords : {
-//                         surgery : data.medicalRecords.surgery,
-//                         medication : data.medicalRecords.medication,
-//                         healthIssue : data.medicalRecords.healthIssue,
-//                         hospitalized : data.medicalRecords.hospitalized,
-//                         vaccination : data.medicalRecords.vaccination,
-//                         gait: data.medicalRecords.gait,
-//                         allergy : data.medicalRecords.allergy,
-//                         deformities : data.medicalRecords.deformities,
-//                         redFlags : data.medicalRecords.redFlags,
-//                         general : {
-//                             height: data.general.height,
-//                             weight: data.general.height,
-//                         }
-//                     }
-//                 }
-//             }
-
-//         })
-//     }
-//     else{
-//         console.log('not patient')
-//     }
-// })
 
 
 const reducer = (state = initialState, action) => {

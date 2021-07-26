@@ -1,19 +1,19 @@
-const InitialState = {
+let InitialState = {
         name: '',
         email : '',
         password: '',
-        dateOfBirth : '',
+        age : '',
         gender: '',
-        designation : '',
-        qualification  : '',
+        degree :'',
+        specialization  : '',
         licenseNumber : '',
         hospital : '',
 }
 
-const reducer = (state=InitialState, action) => {
+const reducer = (state = InitialState, action) => {
     switch(action.type){
-        case 'UPDATE_PROFILE':
-            return state
+        case 'UPDATE_STATE':
+            return action.payload
         default: return state
     }
 }

@@ -6,10 +6,10 @@ const DoctorSignUp = ({navigation}) => {
         name: '',
         email : '',
         password: '',
-        dateOfBirth : '',
+        age : '',
         gender: '',
-        designation : '',
-        qualification  : '',
+        degree : '',
+        specialization  : '',
         licenseNumber : '',
         hospital : '',
     });
@@ -23,14 +23,14 @@ const DoctorSignUp = ({navigation}) => {
             .then((res) => console.log('updated'))
             .catch((err) => console.log(err))
 
-            db.collection('doctors').doc(authUser.uid)
+            db.collection('doctors').doc(authUser.user.email)
             .set({
                 name: profile.name,
-                dateOfBirth : profile.dateOfBirth,
+                age : profile.age,
                 gender: profile.gender,
-                designation :profile.designation,
-                qualification  : profile.qualification,
-                licenseNumber : profile.qualification,
+                degree :profile.degree,
+                specialization  : profile.specialization,
+                licenseNumber : profile.licenseNumber,
                 hospital : profile.hospital,
             })
             .then(() => navigation.navigate('DoctorInitial') )
@@ -53,10 +53,10 @@ const DoctorSignUp = ({navigation}) => {
                         <TextInput value={profile.name} onChangeText={(val) => setProfile(prev => ({...prev, name : val}))} style={styles.input} placeholderTextColor={'white'} placeholder={'Full Name'} />
                         <TextInput value={profile.email} onChangeText={(val) => setProfile(prev => ({...prev, email : val}))} style={styles.input} placeholderTextColor={'white'} placeholder={'Email'} />
                         <TextInput value={profile.password} onChangeText={(val) => setProfile(prev => ({...prev, password : val}))} style={styles.input} placeholderTextColor={'white'} placeholder={'Password'} />
-                        <TextInput value={profile.dateOfBirth} onChangeText={(val) => setProfile(prev => ({...prev, dateOfBirth : val}))} style={styles.input} placeholderTextColor={'white'} placeholder={'Date of Birth'} />
+                        <TextInput value={profile.age} onChangeText={(val) => setProfile(prev => ({...prev, age : val}))} style={styles.input} placeholderTextColor={'white'} placeholder={'Age'} />
                         <TextInput value={profile.gender} onChangeText={(val) => setProfile(prev => ({...prev, gender : val}))} style={styles.input} placeholderTextColor={'white'} placeholder={'Gender'} />
-                        <TextInput value={profile.designation} onChangeText={(val) => setProfile(prev => ({...prev, designation : val}))} style={styles.input} placeholderTextColor={'white'} placeholder={'Designation'} />
-                        <TextInput value={profile.qualification} onChangeText={(val) => setProfile(prev => ({...prev, qualification : val}))} style={styles.input} placeholderTextColor={'white'} placeholder={'Qualification'} />
+                        <TextInput value={profile.degree} onChangeText={(val) => setProfile(prev => ({...prev, degree : val}))} style={styles.input} placeholderTextColor={'white'} placeholder={'degree'} />
+                        <TextInput value={profile.specialization} onChangeText={(val) => setProfile(prev => ({...prev, specialization : val}))} style={styles.input} placeholderTextColor={'white'} placeholder={'specialization'} />
                         <TextInput value={profile.licenseNumber} onChangeText={(val) => setProfile(prev => ({...prev, licenseNumber : val}))} style={styles.input} placeholderTextColor={'white'} placeholder={'License Number'} />
                         <TextInput value={profile.hospital} onChangeText={(val) => setProfile(prev => ({...prev, hospital : val}))} style={styles.input} placeholderTextColor={'white'} placeholder={'Hospital/Clinic'} />
                     </KeyboardAvoidingView>

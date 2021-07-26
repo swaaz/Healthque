@@ -1,7 +1,10 @@
 import React from 'react'
 import { Image, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { useSelector } from 'react-redux'
 
 const DoctorHomePage = ({navigation}) => {
+    const data = useSelector(state=>state.doctor)
+    console.log(data)
     return (
         <SafeAreaView>
             <View style={styles.container}>
@@ -10,19 +13,19 @@ const DoctorHomePage = ({navigation}) => {
                     style={styles.profile}
                 />
                 <View  style={styles.group}>
-                    <Text style={styles.name}>Swasthik Shetty</Text>
-                    <Text style={styles.gender}>male</Text>
+                    <Text style={styles.name}>{data.name}</Text>
+                    <Text style={styles.gender}>{data.gender}</Text>
                 </View>
 
-                <Text style={styles.location}>Mangaluru</Text>
+                <Text style={styles.location}>{data.location}</Text>
 
                 <View style={styles.group}>
-                    <Text style={styles.license}>4SF18IS109</Text>
+                    <Text style={styles.license}>{data.licenseNumber}</Text>
                     <Text style={styles.licenseTitle}>License Number</Text>
                 </View>
                 <View style={styles.row}>
                     <View style={styles.col}>
-                        <Text style={styles.age}>20</Text>
+                        <Text style={styles.age}>{data.age}</Text>
                         <Text style={styles.ageTitle}>Age</Text>
                     </View>
                     <View style={styles.col}>
@@ -31,7 +34,7 @@ const DoctorHomePage = ({navigation}) => {
                     </View>
                 </View>
 
-                <Text style={styles.degree}>MBBS</Text>
+                <Text style={styles.degree}>{data.degree}</Text>
 
                 <View style={styles.footer}>
                     <TouchableOpacity onPress={() => navigation.navigate('')} style={styles.button}>
@@ -40,8 +43,8 @@ const DoctorHomePage = ({navigation}) => {
                             style={styles.plus}
                         />
                     </TouchableOpacity>
-                    <Text style={styles.specialisation}>Cardiologist</Text>
-                    <Text style={styles.hospital}>Wenlock Hospital</Text>
+                    <Text style={styles.specialisation}>{data.specialization}</Text>
+                    <Text style={styles.hospital}>{data.hospital}</Text>
 
                 </View>
 
