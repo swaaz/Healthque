@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import AddNumber from '../components/AddNumber';
-import AddOTP from '../components/AddOTP';
 import {auth, db} from '../firebase'
 import { useDispatch } from 'react-redux';
 import { updateState } from '../state/actionCreators';

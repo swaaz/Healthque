@@ -22,7 +22,6 @@ const PatientSignUp = ({navigation}) => {
             })
             .then((res) => console.log('updated'))
             .catch((err) => console.log(err))
-            console.log(authUser.user.email)
             db.collection('patients').doc(authUser.user.email)
             .set({
                 name: profile.name,
