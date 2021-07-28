@@ -44,7 +44,7 @@ const AddHospitalizationPage = () => {
     db.collection('patients').doc('sham@sham.in')
     .update(
     {
-        surgery : firebase.firestore.FieldValue.arrayUnion(formData)
+      "medicalRecords.hospitalized" : firebase.firestore.FieldValue.arrayUnion(formData)
     }
     )
     .then(() => console.log('data updated') )

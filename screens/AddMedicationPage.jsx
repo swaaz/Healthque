@@ -11,24 +11,35 @@ import {
 } from "react-native";
 
 import NameCard from "../components/NameCard";
+import * as firebase from 'firebase'
+import { db } from '../firebase'
 
 const AddMedicationPage = () => {
   const form = {
     name: "",
     date: "",
-    procedure: "",
-    result: "",
-    treatment: "",
+    reason: "",
+    dosageForm: "",
+    strength: "",
+    instruction: ""
+
   };
   const [formData, setFormData] = useState(form);
 
-  const handleChange = (e) => {
-    // const name = e.target.name;
-    // const value = e.target.value;
-    // console.log(e.target);
-    // console.log(name)
-    // setFormData({ ...formData, [name]: value });
-  };
+ 
+
+  const onSubmit = () => {
+    console.log(formData)
+    db.collection('patients').doc('sham@sham.in')
+    .update(
+    {
+      "medicalRecords.medication" : firebase.firestore.FieldValue.arrayUnion(formData)
+    }
+    )
+    .then(() => console.log('data updated') )
+    .catch(err => alert(err.message))
+        
+  }
 
   return (
     <View style={styles.container}>
@@ -45,52 +56,50 @@ const AddMedicationPage = () => {
 
         <TextInput
           style={styles.textInput}
-          name="date"
+          name="name"
           placeholder="Name of Medication"
-          // value={
-          //     formData.date
-          // }
-          onChange={handleChange}
+          value={ formData.name}
+          onChangeText={(text) => setFormData(prev => ({...prev, name: text}))}
         />
 
         <TextInput
           style={styles.textInput}
-          name="procedure"
+          name="reason"
           placeholder="Reason"
-          // value={formData.procedure}
-          onChange={handleChange}
+          value={formData.reason}
+          onChangeText={(text) => setFormData(prev => ({...prev, reason: text}))}
         />
 
         <TextInput
           style={styles.textInput}
-          name="result"
+          name="dosageForm"
           placeholder="Dosage Form"
-          //   value={formData.result}
-          onChange={handleChange}
+            value={formData.dosageForm}
+          onChangeText={(text) => setFormData(prev => ({...prev, dosageForm: text}))}
         />
         <TextInput
           style={styles.textInput}
-          name="result"
+          name="date"
           placeholder="Date of prescription"
-          //   value={formData.result}
-          onChange={handleChange}
+            value={formData.date}
+          onChangeText={(text) => setFormData(prev => ({...prev, date: text}))}
         />
         <TextInput
           style={styles.textInput}
-          name="result"
+          name="strength"
           placeholder="Strength"
-          //   value={formData.result}
-          onChange={handleChange}
+            value={formData.strength}
+          onChangeText={(text) => setFormData(prev => ({...prev, strength: text}))}
         />
         <TextInput
           style={styles.textInput}
-          name="result"
+          name="instruction"
           placeholder="Dosage Instruction"
-          //   value={formData.result}
-          onChange={handleChange}
+            value={formData.instruction}
+          onChangeText={(text) => setFormData(prev => ({...prev, instruction: text}))}
         />
 
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity style={styles.button} onPress={onSubmit}>
           <Text style={styles.buttonTitle}>Add</Text>
         </TouchableOpacity>
       </View>

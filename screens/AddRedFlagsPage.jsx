@@ -11,21 +11,23 @@ import {
 } from "react-native";
 
 import NameCard from "../components/NameCard";
-
+import * as firebase from 'firebase'
+import { db } from '../firebase'
 const AddRedFlagsPage = () => {
-  const form = {
-    name: "",
-    date: "",
-  };
-  const [formData, setFormData] = useState(form);
+  
+  const [formData, setFormData] = useState('');
 
-  const handleChange = (e) => {
-    // const name = e.target.name;
-    // const value = e.target.value;
-    // console.log(e.target);
-    // console.log(name)
-    // setFormData({ ...formData, [name]: value });
-  };
+  const onSubmit = () => {
+    
+    db.collection('patients').doc('sham@sham.in')
+    .update(
+    {
+        'medicalRecords.redFlags' : firebase.firestore.FieldValue.arrayUnion(formData)
+    }
+    )
+    .then(() => console.log('data updated') )
+    .catch(err => alert(err.message))
+  }
 
   return (
     <View style={styles.container}>
@@ -49,25 +51,11 @@ const AddRedFlagsPage = () => {
           style={styles.textInput}
           placeholder="Name"
           onChangeText={(text) =>
-            setFormData({
-              ...formData,
-              name: text,
-            })
+            setFormData(text)
           }
         />
 
-        <TextInput
-          style={styles.textInput}
-          placeholder="Date"
-          onChangeText={(text) =>
-            setFormData({
-              ...formData,
-              date: text,
-            })
-          }
-        />
-
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity style={styles.button} onPress={onSubmit}>
           <Text style={styles.buttonTitle}>Update</Text>
         </TouchableOpacity>
       </View>
@@ -88,7 +76,7 @@ const styles = StyleSheet.create({
 
   form: {
     width: "100%",
-    height: 350,
+    height: 300,
     backgroundColor: "#5BA2F4",
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
