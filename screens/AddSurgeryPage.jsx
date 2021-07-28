@@ -1,5 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { SegmentedControls } from 'react-native-radio-buttons'
+import * as firebase from 'firebase'
+import { db } from '../firebase'
+
 import {
   StyleSheet,
   Text,
@@ -13,7 +17,9 @@ import {
 
 import NameCard from "../components/NameCard";
 
+
 const RadioButton = (props) => {
+
   return (
     <SafeAreaView>
       <View
@@ -66,15 +72,27 @@ const AddSurgeryPage = () => {
     treatment: "",
   };
   const [formData, setFormData] = useState(form);
-
+  const [option, setOption] = useState('');
+  const options = [
+    "Successful",
+    "Unsuccessful"
+  ];
   const onSubmit = () => {
-
+    let data = formData;
+    data.result = option;
+    db.collection('patients').doc('sham@sham.in')
+    .update(
+    {
+        'medicalRecords.surgery' : firebase.firestore.FieldValue.arrayUnion(data)
+    }
+    )
+    .then(() => console.log('data updated') )
+    .catch(err => alert(err.message))
   }
 
-  const [option, setOption] = useState(false);
-
   return (
-    <View style={styles.container}>
+    <SafeAreaView>
+      <View style={styles.container}>
       <NameCard
         imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
         name="Swasthik Shetty"
@@ -82,8 +100,6 @@ const AddSurgeryPage = () => {
 
       <View style={styles.form}>
         <View>
-          {/* {" "} */}
-          {/* <Image source={{ uri: "" }} /> */}
           <Text style={styles.title}>Surgery</Text>
         </View>
 
@@ -120,14 +136,30 @@ const AddSurgeryPage = () => {
           }
         />
 
-        <View style={styles.buttonGroup}>
+        {/* <View style={styles.buttonGroup}>
           <TouchableOpacity onPress={() => setOption(!option)}>
             <RadioButton selected={option} text="Successful" />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setOption(!option)}>
             <RadioButton selected={option} text="Unsuccessful" />
           </TouchableOpacity>
-        </View>
+        </View> */}
+
+          <View style={styles.radio}>
+            <SegmentedControls
+              backTint={'#5BA2F4'}
+              tint= {"white"}
+              selectedTint= {'#5BA2F4'}
+              selectedBackgroundColor={'white'}
+              options={ options }
+              allowFontScaling={ false } 
+              onSelection={ (text) => setOption(text)}
+              selectedOption={ option }
+              optionContainerStyle={{flex: 1}}
+              containerBorderTint={'white'}
+            />
+          </View>
+
 
         <TextInput
           style={styles.textInput}
@@ -147,6 +179,7 @@ const AddSurgeryPage = () => {
         </TouchableOpacity>
       </View>
     </View>
+    </SafeAreaView>
   );
 };
 
@@ -175,7 +208,7 @@ const styles = StyleSheet.create({
     height: 56,
 
     marginTop: 40,
-    width: 280,
+    width: '75%',
 
     // fontFamily: 'Poppins',
     // borderWidth: 1,
@@ -216,4 +249,10 @@ const styles = StyleSheet.create({
   buttonGroup: {
     flexDirection: "row",
   },
+  radio: {
+    width: '75%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 50
+  }
 });

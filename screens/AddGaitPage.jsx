@@ -11,24 +11,28 @@ import {
 } from "react-native";
 
 import NameCard from "../components/NameCard";
-
+import * as firebase from 'firebase'
+import { db } from '../firebase'
 const AddGaitPage = () => {
   const form = {
-    name: "",
-    date: "",
-    procedure: "",
-    result: "",
-    treatment: "",
+    test: "",
+    condition: "",
+    type: "",
+  
   };
   const [formData, setFormData] = useState(form);
-
-  const handleChange = (e) => {
-    // const name = e.target.name;
-    // const value = e.target.value;
-    // console.log(e.target);
-    // console.log(name)
-    // setFormData({ ...formData, [name]: value });
-  };
+  const onSubmit = () => {
+    
+    db.collection('patients').doc('sham@sham.in')
+    .update(
+    {
+        'medicalRecords.gait' : firebase.firestore.FieldValue.arrayUnion(formData)
+    }
+    )
+    .then(() => console.log('data updated') )
+    .catch(err => alert(err.message))
+  }
+  
 
   return (
     <View style={styles.container}>
@@ -52,29 +56,28 @@ const AddGaitPage = () => {
           style={styles.textInput}
           name="date"
           placeholder="Test"
-          // value={
-          //     formData.date
-          // }
-          onChange={handleChange}
+          value={formData.test}
+
+          onChangeText={val=>setFormData(prev=>({...prev, test: val}))}
         />
 
         <TextInput
           style={styles.textInput}
-          name="procedure"
+          name="condition"
           placeholder="Normal/ Abnormal"
-          // value={formData.procedure}
-          onChange={handleChange}
+          value={formData.condition}
+          onChangeText={val=>setFormData(prev=>({...prev, condition: val}))}
         />
 
         <TextInput
           style={styles.textInput}
           name="result"
           placeholder="Type of abnormal gait"
-          //   value={formData.result}
-          onChange={handleChange}
+            value={formData.type}
+          onChangeText={val=>setFormData(prev=>({...prev, type: val}))}
         />
 
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity style={styles.button} onPress={onSubmit}>
           <Text style={styles.buttonTitle}>Add</Text>
         </TouchableOpacity>
       </View>

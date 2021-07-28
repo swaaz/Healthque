@@ -11,6 +11,8 @@ import {
 } from "react-native";
 
 import NameCard from "../components/NameCard";
+import * as firebase from 'firebase'
+import { db } from '../firebase'
 
 const AddHealthIssuesPage = () => {
   const form = {
@@ -23,20 +25,18 @@ const AddHealthIssuesPage = () => {
 
   const [formData, setFormData] = useState(form);
 
-  //   useEffect(() => {
-  //     console.log(formData);
-  //   });
-
-  //   const handleChange = (e) => {
-  //     const name = e.target.name;
-  //     const value = e.target.value;
-  //     console.log(e.target);
-  //     console.log(name, value);
-  //     setFormData({
-  //       ...formData,
-  //       [name]: value,
-  //     });
-  //   };
+  const onSubmit = () => {
+    console.log(formData)
+    db.collection('patients').doc('sham@sham.in')
+    .update(
+    {
+      "medicalRecords.healthIssue" : firebase.firestore.FieldValue.arrayUnion(formData)
+    }
+    )
+    .then(() => console.log('data updated') )
+    .catch(err => alert(err.message))
+        
+  }
 
   return (
     <ScrollView>
@@ -110,7 +110,7 @@ const AddHealthIssuesPage = () => {
             }
           />
 
-          <TouchableOpacity style={styles.button} onPress={() => {}}>
+          <TouchableOpacity style={styles.button} onPress={onSubmit}>
             <Text style={styles.buttonTitle}>Add</Text>
           </TouchableOpacity>
         </View>

@@ -11,24 +11,30 @@ import {
 } from "react-native";
 
 import NameCard from "../components/NameCard";
+import * as firebase from 'firebase'
+import { db } from '../firebase'
 
 const AddAllergyPage = () => {
   const form = {
     name: "",
     date: "",
-    procedure: "",
-    result: "",
-    treatment: "",
+    complication: "",
+  
   };
   const [formData, setFormData] = useState(form);
 
-  const handleChange = (e) => {
-    // const name = e.target.name;
-    // const value = e.target.value;
-    // console.log(e.target);
-    // console.log(name)
-    // setFormData({ ...formData, [name]: value });
-  };
+  const onSubmit = () => {
+    console.log(formData)
+    db.collection('patients').doc('sham@sham.in')
+    .update(
+    {
+      "medicalRecords.allergy" : firebase.firestore.FieldValue.arrayUnion(formData)
+    }
+    )
+    .then(() => console.log('data updated') )
+    .catch(err => alert(err.message))
+        
+  }
 
   return (
     <View style={styles.container}>
@@ -49,29 +55,27 @@ const AddAllergyPage = () => {
           style={styles.textInput}
           name="date"
           placeholder="Name"
-          // value={
-          //     formData.date
-          // }
-          onChange={handleChange}
+          value={formData.name}
+          onChangeText={(val) => setFormData(prev => ({...prev, name : val}))}
         />
 
         <TextInput
           style={styles.textInput}
           name="procedure"
           placeholder="Date"
-          // value={formData.procedure}
-          onChange={handleChange}
+          value={formData.date}
+          onChangeText={(val) => setFormData(prev => ({...prev, date : val}))}
         />
 
         <TextInput
           style={styles.textInput}
           name="result"
           placeholder="Complications"
-          //   value={formData.result}
-          onChange={handleChange}
+            value={formData.complication}
+          onChangeText={(val) => setFormData(prev => ({...prev, complication : val}))}
         />
 
-        <TouchableOpacity style={styles.button} onPress={() => {}}>
+        <TouchableOpacity style={styles.button} onPress={onSubmit}>
           <Text style={styles.buttonTitle}>Add</Text>
         </TouchableOpacity>
       </View>
