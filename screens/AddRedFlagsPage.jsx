@@ -43,7 +43,6 @@ const AddRedFlagsPage = () => {
 
       <View style={styles.form}>
         <View>
-          {/* <Image source={{ uri: "" }} /> */}
           <Text style={styles.title}>Red Flags</Text>
         </View>
 

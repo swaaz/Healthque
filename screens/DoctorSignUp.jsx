@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View , TextInput, StatusBar, KeyboardAvoidingView } from 'react-native'
-import { auth , db} from '../firebase'
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View , TextInput, StatusBar, KeyboardAvoidingView, Image } from 'react-native'
+import { auth , db, storage } from '../firebase'
+import * as ImagePicker from 'expo-image-picker'
+
 const DoctorSignUp = ({navigation}) => {
     const [profile, setProfile ] = useState({
         name: '',
@@ -12,7 +14,51 @@ const DoctorSignUp = ({navigation}) => {
         specialization  : '',
         licenseNumber : '',
         hospital : '',
+        image : ''
     });
+    const [image, setImage] = useState(null);
+    const [firebaseUrl, setFirebaseUrl] = useState('');
+
+   
+
+    const addImage = async() => {
+            let result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.All,
+                allowsEditing: true,
+                aspect: [4, 4],
+                quality: 1,
+                });
+        
+                // console.log(result);
+        
+                if (!result.cancelled) {
+                setImage(result.uri);
+                }
+                uploadImage(result.uri)
+                
+    };
+    const pickImage = async () => {
+        if (Platform.OS !== 'web') {
+            const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+            if (status !== 'granted') {
+            alert('Sorry, we need camera roll permissions to make this work!');
+            }
+            else{
+                addImage();
+            }
+        }
+    };
+
+    const uploadImage = async (image) => {
+
+        const res = await fetch(image);
+        const blob = await res.blob();
+
+        const ref =  storage.ref().child(`doctors/${new Date().toISOString()}`);
+        await ref.put(blob)
+        setFirebaseUrl(await ref.getDownloadURL());
+        
+    };
 
     const onSubmit = async() => {
         await auth.createUserWithEmailAndPassword(profile.email, profile.password)
@@ -32,6 +78,7 @@ const DoctorSignUp = ({navigation}) => {
                 specialization  : profile.specialization,
                 licenseNumber : profile.licenseNumber,
                 hospital : profile.hospital,
+                image : firebaseUrl
             })
             .then(() => navigation.navigate('DoctorInitial') )
             .catch(err => alert(err.message))
@@ -43,8 +90,18 @@ const DoctorSignUp = ({navigation}) => {
             <View style={styles.container}>
                 <View style={styles.form}>
                     <View style={styles.profile}>
-                        <View style={styles.circle} />
-                        <TouchableOpacity>
+                        <View style={styles.circle}>
+                            {
+                                image?
+                                <Image source={{uri: image}} style={styles.profileImage} />
+                                :
+                                null
+                            }
+                        </View>
+                        <TouchableOpacity
+                            onPress={pickImage}
+
+                        >
                             <Text style={styles.addImage}>Add Profile Image</Text>
                         </TouchableOpacity>
                     </View>
@@ -102,6 +159,11 @@ const styles = StyleSheet.create({
         height: 100,
         borderRadius : 100/2,
         backgroundColor : '#5BA2F4'
+    },
+    profileImage : {
+        width: '100%',
+        height: '100%',
+        borderRadius: 100/2
     },
     input : {
         width: 300,

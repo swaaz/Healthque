@@ -1,7 +1,10 @@
 import React from 'react'
 import { Image, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { useSelector } from 'react-redux'
 
 const AddDetails = ({navigation}) => {
+    const state = useSelector(state => state);
+    console.log(state)
     return (
        <SafeAreaView>
             <View style={styles.container}>

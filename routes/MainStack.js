@@ -23,6 +23,9 @@ import MedicineHistoryPage from '../screens/MedicineHistoryPage'
 import DoctorHomePage from '../screens/DoctorHomePage';
 import AddDetails from '../screens/AddDetails';
 import PatientHomePage from '../screens/PatientHomePage';
+import EmailVerification from '../screens/EmailVerification';
+import PatientHomePageDoctor from '../screens/PatientHomePageDoctor';
+
 
 
 const screens = {
@@ -33,8 +36,20 @@ const screens = {
             headerShown : false
         }
     },
+	PatientHomePageDoctor : {
+		screen : PatientHomePageDoctor,
+		navigationOptions : {
+            headerShown : false
+        }
+	},
     PatientHomePage : {
         screen : PatientHomePage,
+        navigationOptions : {
+            headerShown : false
+        }
+    },
+	EmailVerification : {
+        screen : EmailVerification,
         navigationOptions : {
             headerShown : false
         }
