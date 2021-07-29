@@ -12,25 +12,30 @@ import {
 
 import NameCard from "../components/NameCard";
 // import * as firebase from "firebase";
-// import { db } from "../firebase";
+import { db } from "../firebase";
 
-const EmailVerification = () => {
-  const form = {
-    email: "",
+const EmailVerification = ({navigation}) => {
+  
+  const [formData, setFormData] = useState('');
+
+  const onSubmit = () => {
+
+    const data = db.collection('patients').doc(formData)
+    data.get()
+      .then((doc) => {
+        if(doc.exists){
+
+          navigation.navigate("PatientHomePageDoctor", {
+            state : doc.data()
+          });
+        }
+        else{
+          alert('no doc found');
+        }
+      })
+      .catch((err) => console.log(err))
+
   };
-  const [formData, setFormData] = useState(form);
-  const onSubmit = () => {};
-
-  // const onSubmit = () => {
-  //   db.collection("patients")
-  //     .doc("sham@sham.in")
-  //     .update({
-  //       "medicalRecords.deformities":
-  //         firebase.firestore.FieldValue.arrayUnion(formData),
-  //     })
-  //     .then(() => console.log("data updated"))
-  //     .catch((err) => alert(err.message));
-  // };
 
   return (
     <View style={styles.container}>
@@ -46,7 +51,6 @@ const EmailVerification = () => {
 
       <View style={styles.form}>
         <View>
-          {/* <Image source={{ uri: "" }} /> */}
           <Text style={styles.title}>Email Verification</Text>
         </View>
 
@@ -54,10 +58,8 @@ const EmailVerification = () => {
           style={styles.textInput}
           name="email"
           placeholder="Enter Email ID"
-          value={formData.name}
-          onChangeText={(val) =>
-            setFormData((prev) => ({ ...prev, name: val }))
-          }
+          value={formData}
+          onChangeText={(val) => setFormData(val) }
         />
 
         <TouchableOpacity style={styles.button} onPress={onSubmit}>
@@ -81,7 +83,8 @@ const styles = StyleSheet.create({
 
   form: {
     width: "100%",
-    height: 400,
+    height: '35%',
+    minHeight : 200,
     backgroundColor: "#5BA2F4",
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
@@ -93,7 +96,7 @@ const styles = StyleSheet.create({
     height: 56,
 
     marginTop: 15,
-    width: 280,
+    width: '80%',
 
     // fontFamily: 'Poppins',
     // borderWidth: 1,
@@ -118,7 +121,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#034C81",
-    width: 125,
+    width: '45%',
     padding: 10,
     // paddingVertical: 10,
     borderRadius: 10,

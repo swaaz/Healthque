@@ -12,7 +12,7 @@ let InitialState = {
 
 const reducer = (state = InitialState, action) => {
     switch(action.type){
-        case 'UPDATE_STATE':
+        case 'UPDATE_STATE_DOCTOR':
             return action.payload
         default: return state
     }

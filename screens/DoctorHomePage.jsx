@@ -3,7 +3,7 @@ import { Image, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, Vie
 import { useSelector } from 'react-redux'
 
 const DoctorHomePage = ({navigation}) => {
-    const data = useSelector(state=>state.doctor)
+    const data = useSelector(state => state.doctor)
     console.log(data)
     return (
         <SafeAreaView>
@@ -37,7 +37,7 @@ const DoctorHomePage = ({navigation}) => {
                 <Text style={styles.degree}>{data.degree}</Text>
 
                 <View style={styles.footer}>
-                    <TouchableOpacity onPress={() => navigation.navigate('AddDetails')} style={styles.button}>
+                    <TouchableOpacity onPress={() => navigation.navigate('EmailVerification')} style={styles.button}>
                         <Image
                             source={require('../assets/icons/plus.png')}
                             style={styles.plus}

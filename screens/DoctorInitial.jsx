@@ -3,7 +3,7 @@ import { Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, Vie
 import AddNumber from '../components/AddNumber'
 import { auth, db } from '../firebase'
 import { useDispatch } from 'react-redux';
-import { updateState } from '../state/actionCreators';
+import { updateStateDoctor } from '../state/actionCreators';
 
 const DoctorInitial = ({navigation}) => {
     const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const DoctorInitial = ({navigation}) => {
             if(authUser && authUser.displayName === 'doctor'){
                 const dbValue = db.collection('doctors').doc(authUser.email)
                 dbValue.onSnapshot((doc) => {
-                    dispatch(updateState(doc.data()))
+                    dispatch(updateStateDoctor(doc.data()))
                 })
                 navigation.navigate('DoctorHomePage');
             }

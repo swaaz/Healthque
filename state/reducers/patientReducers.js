@@ -25,7 +25,7 @@ let initialState = {
 
 const reducer = (state = initialState, action) => {
     switch(action.type){
-        case 'UPDATE_STATE':
+        case 'UPDATE_STATE_PATIENT':
             return action.payload
         case 'ADD_SURGERY':
             return state
