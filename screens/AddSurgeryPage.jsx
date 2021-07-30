@@ -13,6 +13,7 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   SafeAreaView,
+  ToastAndroid,
 } from "react-native";
 
 import NameCard from "../components/NameCard";
@@ -46,7 +47,7 @@ const AddSurgeryPage = () => {
         'medicalRecords.surgery' : firebase.firestore.FieldValue.arrayUnion(data)
     }
     )
-    .then(() => console.log('data updated') )
+    .then(() => ToastAndroid.show('Data added Successfully!!!',ToastAndroid.SHORT))
     .catch(err => alert(err.message))
   }
 
