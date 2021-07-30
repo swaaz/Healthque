@@ -31,7 +31,7 @@ const PatientHomePage = ({navigation}) => {
                 </View>
 
                 <Text style={styles.location}>{state.location}</Text>
-
+  
                 <View style={styles.row}>
                     <View style={styles.col}>
                         <Text style={styles.digit}>{state.age}</Text>
