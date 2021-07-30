@@ -11,10 +11,6 @@ const HospitalizationHistoryPage = () => {
   const hospitalList = state.medicalRecords.hospitalized;
   console.log(hospitalList)
 
-
- 
-  
-
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
@@ -26,8 +22,8 @@ const HospitalizationHistoryPage = () => {
           <Text style={styles.title}>Hospitalization History</Text>
           {hospitalList.length ? (
             <View>
-              {hospitalList.map((visit) => {
-                return <HospitalizationCard key={visit.key} {...visit} />;
+              {hospitalList.map((visit, key) => {
+                return <HospitalizationCard key={key} {...visit} />;
               })}
             </View>
           ) : (
