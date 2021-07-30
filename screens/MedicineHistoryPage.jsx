@@ -18,134 +18,19 @@ const MedicineHistoryPage = () => {
   const medData = state.medicalRecords.medication;
   console.log(medData);
 
-  // const getMedData = () => {
-  //   const data = [
-  //     {
-  //       key: 1,
-  //       date: "05/01/2005",
-  //       medicine: [
-  //         {
-  //           medicineName: "Metformin",
-  //           medType: "Tablet",
-  //           quantity: "9",
-  //           reason: "Diabetes Type 2",
-  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       key: 2,
-  //       date: "05/01/2005",
-  //       medicine: [
-  //         {
-  //           medicineName: "Anuemo10",
-  //           medType: "Tablet",
-  //           quantity: "9",
-  //           reason: "Diabetes Type 2",
-  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
-  //         },
-  //         {
-  //           medicineName: "Aspirin",
-  //           medType: "Tablet",
-  //           quantity: "2",
-  //           reason: "Diabetes Type 2",
-  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       key: 3,
-  //       date: "05/01/2005",
-  //       medicine: [
-  //         {
-  //           medicineName: "Anuemo10",
-  //           medType: "Tablet",
-  //           quantity: "9",
-  //           reason: "Diabetes Type 2",
-  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       key: 4,
-  //       date: "05/01/2005",
-  //       medicine: [
-  //         {
-  //           medicineName: "Anuemo10",
-  //           medType: "Tablet",
-  //           quantity: "9",
-  //           reason: "Diabetes Type 2",
-  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       key: 5,
-  //       date: "05/01/2005",
-  //       medicine: [
-  //         {
-  //           medicineName: "Anuemo10",
-  //           medType: "Tablet",
-  //           quantity: "9",
-  //           reason: "Diabetes Type 2",
-  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
-  //         },
-  //         {
-  //           medicineName: "Aspirin",
-  //           medType: "Tablet",
-  //           quantity: "2",
-  //           reason: "Diabetes Type 2",
-  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       key: 6,
-  //       date: "05/01/2005",
-  //       medicine: [
-  //         {
-  //           medicineName: "Anuemo10",
-  //           medType: "Tablet",
-  //           quantity: "9",
-  //           reason: "Diabetes Type 2",
-  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
-  //         },
-  //         {
-  //           medicineName: "Aspirin",
-  //           medType: "Tablet",
-  //           quantity: "2",
-  //           reason: "Diabetes Type 2",
-  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
-  //         },
-  //       ],
-  //     },
-  //   ];
-
-  //   setMedData(data);
-  // };
-
-  // useEffect(() => {
-  //   getMedData();
-  // }, []);
-
   return (
     <ScrollView contentContainerStyle={{ flex: 1 }}>
       <View style={styles.container}>
         <NameCard imageUrl={state.image} name={state.name} />
         <View style={styles.panel}>
           <Text style={styles.title}>Prescription History</Text>
-          {medData.length ? (
-            <View>
-              {/* {medData.map((data, key) => {
-                // This will render a row for each data element.
-                return <TableComponent key={key} {...data} />;
-              })} */}
-
-              <TableComponent {...medData} />
-            </View>
-          ) : (
-            <Text style={styles.altText}>No Prescription Data</Text>
-          )}
+            {medData.length ? (
+              <View>
+                <TableComponent {...medData} />
+              </View>
+            ) : (
+              <Text style={styles.altText}>No Prescription Data</Text>
+            )}
         </View>
       </View>
     </ScrollView>
@@ -162,8 +47,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   panel: {
-    // width: "100%",
-    // height: "100%",
+    width: "100%",
+    height: "100%",
     flex: 1,
     backgroundColor: "#5BA2F4",
     borderTopLeftRadius: 50,
@@ -186,5 +71,9 @@ const styles = StyleSheet.create({
   scrollView: {
     width: "100%",
     height: "100%",
+  },
+  body: {
+    height: "100%",
+    width: "100%",
   },
 });
