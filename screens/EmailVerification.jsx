@@ -25,20 +25,20 @@ const EmailVerification = ({navigation}) => {
   const state = useSelector(state => state.doctor);
 
   const onSubmit = () => {
-    const data = db.collection("patients").doc(formData);
-    data
-      .get()
-      .then((doc) => {
-        if(doc.exists){
 
-          navigation.navigate("PatientHomePageDoctor");
-          dispatch(updateStatePatient(doc.data()));
-        }
-        else {
-          alert('no doc found');
-        }
-      })
-      .catch((err) => console.log(err));
+    const data = db.collection('patients').doc(formData)
+    data.onSnapshot((doc) => {
+      if(doc.exists){
+
+        navigation.navigate("PatientHomePageDoctor");
+        dispatch(updateStatePatient(doc.data()));
+      }
+      else {
+        alert('no doc found');
+      }
+    })
+    
+
   };
 
   return (
