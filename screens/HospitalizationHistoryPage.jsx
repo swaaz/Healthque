@@ -5,23 +5,19 @@ import NameCard from "../components/NameCard";
 import HospitalizationCard from "../components/HospitalizationCard";
 import { useSelector } from "react-redux";
 
-
 const HospitalizationHistoryPage = () => {
-  const state = useSelector(state => state.patient);
+  const state = useSelector((state) => state.patient);
   const hospitalList = state.medicalRecords.hospitalized;
-  console.log(hospitalList)
+  console.log(hospitalList);
 
   return (
-    <ScrollView style={styles.scrollView}>
+    <ScrollView contentContainerStyle={{ flex: 1 }}>
       <View style={styles.container}>
-      <NameCard
-          imageUrl={state.image}
-          name={state.name}
-      />
+        <NameCard imageUrl={state.image} name={state.name} />
         <View style={styles.panel}>
           <Text style={styles.title}>Hospitalization History</Text>
           {hospitalList.length ? (
-            <View>
+            <View style={styles.card}>
               {hospitalList.map((visit, key) => {
                 return <HospitalizationCard key={key} {...visit} />;
               })}
@@ -69,5 +65,9 @@ const styles = StyleSheet.create({
   scrollView: {
     width: "100%",
     height: "100%",
+  },
+  card: {
+    height: "100%",
+    width: "75%",
   },
 });

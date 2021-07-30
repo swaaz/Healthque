@@ -6,15 +6,12 @@ import NameCard from "../components/NameCard";
 import SurgeryCard from "../components/SurgeryCard";
 
 const SurgeryHistoryPage = () => {
-  
-  const state = useSelector((state) => state.patient) ;
-  const surgeryList = state.medicalRecords.surgery ;
-  console.log(state)
-
-  
+  const state = useSelector((state) => state.patient);
+  const surgeryList = state.medicalRecords.surgery;
+  console.log(state);
 
   return (
-    <ScrollView contentContainerStyle={{ flex: 1 }}>
+    <ScrollView>
       <View style={styles.container}>
         <NameCard imageUrl={state.image} name={state.name} />
         <View style={styles.panel}>
@@ -72,5 +69,10 @@ const styles = StyleSheet.create({
   altTextContainer: {
     flex: 1,
     justifyContent: "center",
+  },
+  card: {
+    width: "100%",
+    height: "100%",
+    padding: 20,
   },
 });

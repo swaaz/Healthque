@@ -24,13 +24,14 @@ const MedicineHistoryPage = () => {
         <NameCard imageUrl={state.image} name={state.name} />
         <View style={styles.panel}>
           <Text style={styles.title}>Prescription History</Text>
-            {medData.length ? (
-              <View>
-                <TableComponent {...medData} />
-              </View>
-            ) : (
-              <Text style={styles.altText}>No Prescription Data</Text>
-            )}
+
+          {medData.length ? (
+            <View style={styles.card}>
+              <TableComponent {...medData} />
+            </View>
+          ) : (
+            <Text style={styles.altText}>No Prescription Data</Text>
+          )}
         </View>
       </View>
     </ScrollView>
@@ -75,5 +76,9 @@ const styles = StyleSheet.create({
   body: {
     height: "100%",
     width: "100%",
+  },
+  card: {
+    height: "100%",
+    width: "75%",
   },
 });
