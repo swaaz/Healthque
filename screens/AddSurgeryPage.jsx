@@ -16,52 +16,9 @@ import {
 } from "react-native";
 
 import NameCard from "../components/NameCard";
+import { useSelector } from "react-redux";
 
 
-const RadioButton = (props) => {
-
-  return (
-    <SafeAreaView>
-      <View
-      style={{
-        flexDirection: "row",
-        alignContent: "center",
-        alignItems: "center",
-        marginTop: 30,
-        marginRight: 10,
-      }}
-    >
-      <View
-        style={[
-          {
-            height: 24,
-            width: 24,
-            borderRadius: 12,
-            borderWidth: 2,
-            borderColor: "#000",
-            alignItems: "center",
-            justifyContent: "center",
-            marginRight: 5,
-          },
-          props.style,
-        ]}
-      >
-        {props.selected && (
-          <View
-            style={{
-              height: 12,
-              width: 12,
-              borderRadius: 6,
-              backgroundColor: "#000",
-            }}
-          />
-        )}
-      </View>
-      <Text style={{ fontSize: 20 }}>{props.text}</Text>
-    </View>
-    </SafeAreaView>
-  );
-};
 
 const AddSurgeryPage = () => {
   const form = {
@@ -73,14 +30,17 @@ const AddSurgeryPage = () => {
   };
   const [formData, setFormData] = useState(form);
   const [option, setOption] = useState('');
+  const state = useSelector(state => state.patient);
   const options = [
     "Successful",
     "Unsuccessful"
   ];
+
   const onSubmit = () => {
+    console.log(state.email)
     let data = formData;
     data.result = option;
-    db.collection('patients').doc('sham@sham.in')
+    db.collection('patients').doc(state.email)
     .update(
     {
         'medicalRecords.surgery' : firebase.firestore.FieldValue.arrayUnion(data)
@@ -94,8 +54,8 @@ const AddSurgeryPage = () => {
     <SafeAreaView>
       <View style={styles.container}>
       <NameCard
-        imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
-        name="Swasthik Shetty"
+        imageUrl={state.image}
+        name={state.name}
       />
 
       <View style={styles.form}>

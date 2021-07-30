@@ -11,134 +11,139 @@ import {
 } from "react-native";
 import TableComponent from "../components/TableComponent";
 import NameCard from "../components/NameCard";
+import { useSelector } from "react-redux";
+
 
 const MedicineHistoryPage = () => {
-  const [medData, setMedData] = useState([]);
+  const state = useSelector(state => state.patient);
+  const medData = state.medicalRecords;
+  console.log(medData)
 
-  const getMedData = () => {
-    const data = [
-      {
-        key: 1,
-        date: "05/01/2005",
-        medicine: [
-          {
-            medicineName: "Metformin",
-            medType: "Tablet",
-            quantity: "9",
-            reason: "Diabetes Type 2",
-            dosageInstruction: "Twice a day ,after meals, morning and evening",
-          },
-        ],
-      },
-      {
-        key: 2,
-        date: "05/01/2005",
-        medicine: [
-          {
-            medicineName: "Anuemo10",
-            medType: "Tablet",
-            quantity: "9",
-            reason: "Diabetes Type 2",
-            dosageInstruction: "Twice a day ,after meals, morning and evening",
-          },
-          {
-            medicineName: "Aspirin",
-            medType: "Tablet",
-            quantity: "2",
-            reason: "Diabetes Type 2",
-            dosageInstruction: "Twice a day ,after meals, morning and evening",
-          },
-        ],
-      },
-      {
-        key: 3,
-        date: "05/01/2005",
-        medicine: [
-          {
-            medicineName: "Anuemo10",
-            medType: "Tablet",
-            quantity: "9",
-            reason: "Diabetes Type 2",
-            dosageInstruction: "Twice a day ,after meals, morning and evening",
-          },
-        ],
-      },
-      {
-        key: 4,
-        date: "05/01/2005",
-        medicine: [
-          {
-            medicineName: "Anuemo10",
-            medType: "Tablet",
-            quantity: "9",
-            reason: "Diabetes Type 2",
-            dosageInstruction: "Twice a day ,after meals, morning and evening",
-          },
-        ],
-      },
-      {
-        key: 5,
-        date: "05/01/2005",
-        medicine: [
-          {
-            medicineName: "Anuemo10",
-            medType: "Tablet",
-            quantity: "9",
-            reason: "Diabetes Type 2",
-            dosageInstruction: "Twice a day ,after meals, morning and evening",
-          },
-          {
-            medicineName: "Aspirin",
-            medType: "Tablet",
-            quantity: "2",
-            reason: "Diabetes Type 2",
-            dosageInstruction: "Twice a day ,after meals, morning and evening",
-          },
-        ],
-      },
-      {
-        key: 6,
-        date: "05/01/2005",
-        medicine: [
-          {
-            medicineName: "Anuemo10",
-            medType: "Tablet",
-            quantity: "9",
-            reason: "Diabetes Type 2",
-            dosageInstruction: "Twice a day ,after meals, morning and evening",
-          },
-          {
-            medicineName: "Aspirin",
-            medType: "Tablet",
-            quantity: "2",
-            reason: "Diabetes Type 2",
-            dosageInstruction: "Twice a day ,after meals, morning and evening",
-          },
-        ],
-      },
-    ];
 
-    setMedData(data);
-  };
+  // const getMedData = () => {
+  //   const data = [
+  //     {
+  //       key: 1,
+  //       date: "05/01/2005",
+  //       medicine: [
+  //         {
+  //           medicineName: "Metformin",
+  //           medType: "Tablet",
+  //           quantity: "9",
+  //           reason: "Diabetes Type 2",
+  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       key: 2,
+  //       date: "05/01/2005",
+  //       medicine: [
+  //         {
+  //           medicineName: "Anuemo10",
+  //           medType: "Tablet",
+  //           quantity: "9",
+  //           reason: "Diabetes Type 2",
+  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
+  //         },
+  //         {
+  //           medicineName: "Aspirin",
+  //           medType: "Tablet",
+  //           quantity: "2",
+  //           reason: "Diabetes Type 2",
+  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       key: 3,
+  //       date: "05/01/2005",
+  //       medicine: [
+  //         {
+  //           medicineName: "Anuemo10",
+  //           medType: "Tablet",
+  //           quantity: "9",
+  //           reason: "Diabetes Type 2",
+  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       key: 4,
+  //       date: "05/01/2005",
+  //       medicine: [
+  //         {
+  //           medicineName: "Anuemo10",
+  //           medType: "Tablet",
+  //           quantity: "9",
+  //           reason: "Diabetes Type 2",
+  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       key: 5,
+  //       date: "05/01/2005",
+  //       medicine: [
+  //         {
+  //           medicineName: "Anuemo10",
+  //           medType: "Tablet",
+  //           quantity: "9",
+  //           reason: "Diabetes Type 2",
+  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
+  //         },
+  //         {
+  //           medicineName: "Aspirin",
+  //           medType: "Tablet",
+  //           quantity: "2",
+  //           reason: "Diabetes Type 2",
+  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       key: 6,
+  //       date: "05/01/2005",
+  //       medicine: [
+  //         {
+  //           medicineName: "Anuemo10",
+  //           medType: "Tablet",
+  //           quantity: "9",
+  //           reason: "Diabetes Type 2",
+  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
+  //         },
+  //         {
+  //           medicineName: "Aspirin",
+  //           medType: "Tablet",
+  //           quantity: "2",
+  //           reason: "Diabetes Type 2",
+  //           dosageInstruction: "Twice a day ,after meals, morning and evening",
+  //         },
+  //       ],
+  //     },
+  //   ];
 
-  useEffect(() => {
-    getMedData();
-  }, []);
+  //   setMedData(data);
+  // };
+
+  // useEffect(() => {
+  //   getMedData();
+  // }, []);
 
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <NameCard
-          imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
-          name="Swasthik Shetty"
-        />
+      <NameCard
+          imageUrl={state.image}
+          name={state.name}
+      />
         <View style={styles.panel}>
           <Text style={styles.title}>Prescription History</Text>
           {medData.length ? (
             <View>
-              {medData.map((data) => {
+              {medData.map((data,key) => {
                 // This will render a row for each data element.
-                return <TableComponent key={data.key} {...data} />;
+                return <TableComponent key={key} {...data} />;
               })}
             </View>
           ) : (

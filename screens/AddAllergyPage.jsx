@@ -13,8 +13,12 @@ import {
 import NameCard from "../components/NameCard";
 import * as firebase from 'firebase'
 import { db } from '../firebase'
+import { useSelector } from "react-redux";
+
 
 const AddAllergyPage = () => {
+  const state = useSelector(state => state.patient);
+
   const form = {
     name: "",
     date: "",
@@ -25,7 +29,7 @@ const AddAllergyPage = () => {
 
   const onSubmit = () => {
     console.log(formData)
-    db.collection('patients').doc('sham@sham.in')
+    db.collection('patients').doc(state.email)
     .update(
     {
       "medicalRecords.allergy" : firebase.firestore.FieldValue.arrayUnion(formData)
@@ -39,8 +43,8 @@ const AddAllergyPage = () => {
   return (
     <View style={styles.container}>
       <NameCard
-        imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
-        name="Swasthik Shetty"
+          imageUrl={state.image}
+          name={state.name}
       />
 
       <Image source={require("../assets/vectors/girlStanding.png")} />

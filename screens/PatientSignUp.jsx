@@ -73,6 +73,7 @@ const PatientSignUp = ({navigation}) => {
                 gender: profile.gender,
                 location: profile.location,
                 image: firebaseUrl,
+                email : profile.email,
                 medicalRecords : {
                     surgery : [],
                     medication : [],

@@ -9,7 +9,7 @@ const DoctorHomePage = ({navigation}) => {
         <SafeAreaView>
             <View style={styles.container}>
                 <Image
-                    source={{uri : 'https://avatars.githubusercontent.com/u/42874695?v=4'}}
+                    source={{uri : data.image }}
                     style={styles.profile}
                 />
                 <View  style={styles.group}>
