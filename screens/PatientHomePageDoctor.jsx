@@ -22,9 +22,8 @@ const PatientHomePageDoctor = ({ navigation }) => {
     auth.signOut().then(() => navigation.navigate("LandingOption"));
   };
 
-  // const onUpdate = () => {
-
-  //         console.log('ptrssed')
+    
+ 
 
   //         db.collection('patients').doc('hEwopOnPibUJPK2XRHMa')
   //         .update(
@@ -162,17 +161,19 @@ const PatientHomePageDoctor = ({ navigation }) => {
             </TouchableOpacity>
           </View>
 
-          <Text style={styles.title}>Red Flags</Text>
-          <View style={styles.labels}>
-            {/* {
+                    <Text style={styles.title}>Red Flags</Text>
+                    <View style={styles.labels}>
+                        {
                             state.medicalRecords.redFlags.map((data,key) => <RedFlag key={key} label={data} />)
-                        } */}
-          </View>
-        </View>
-      </View>
-    </SafeAreaView>
-  );
-};
+                        }
+
+                    </View>
+
+                </View>
+            </View>
+        </SafeAreaView>
+    )
+}
 
 export default PatientHomePageDoctor;
 

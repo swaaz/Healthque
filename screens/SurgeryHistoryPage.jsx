@@ -6,9 +6,12 @@ import NameCard from "../components/NameCard";
 import SurgeryCard from "../components/SurgeryCard";
 
 const SurgeryHistoryPage = () => {
-  const state = useSelector((state) => state.patient);
-  const surgeryList = state.medicalRecords.surgery;
-  console.log(surgeryList);
+  
+  const state = useSelector((state) => state.patient) ;
+  const surgeryList = state.medicalRecords.surgery ;
+  console.log(state)
+
+  
 
   return (
     <ScrollView contentContainerStyle={{ flex: 1 }}>

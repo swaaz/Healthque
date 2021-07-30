@@ -34,7 +34,7 @@ const EmailVerification = ({navigation}) => {
           navigation.navigate("PatientHomePageDoctor");
           dispatch(updateStatePatient(doc.data()));
         }
-        else{
+        else {
           alert('no doc found');
         }
       })
