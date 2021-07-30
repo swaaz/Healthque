@@ -3,81 +3,25 @@ import { useState, useEffect } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import NameCard from "../components/NameCard";
 import HospitalizationCard from "../components/HospitalizationCard";
+import { useSelector } from "react-redux";
 
-const HospitalizationHistoryPage = (props) => {
-  const [hospitalList, setHospitalList] = useState([]);
 
-  /**
-   * Gets the history list of surgery data
-   */
-  const getHospitalization = async () => {
-    const response = [
-      {
-        key: 1,
-        reason: "Cardiac Arrest",
-        treatment: "Surgery",
-        joinedDate: "05/01/2005",
-        joinedTime: "10:00",
-        dischargeDate: "15/01/2005",
-        dischargeTime: "18:00",
-        nameOfHospital: "AJ",
-      },
-      {
-        key: 2,
-        reason: "Cardiac Arrest",
-        treatment: "Surgery",
-        joinedDate: "05/01/2005",
-        joinedTime: "10:00",
-        dischargeDate: "15/01/2005",
-        dischargeTime: "18:00",
-        nameOfHospital: "AJ",
-      },
-      {
-        key: 3,
-        reason: "Cardiac Arrest",
-        treatment: "Surgery",
-        joinedDate: "05/01/2005",
-        joinedTime: "10:00",
-        dischargeDate: "15/01/2005",
-        dischargeTime: "18:00",
-        nameOfHospital: "AJ",
-      },
-      {
-        key: 4,
-        reason: "Cardiac Arrest",
-        treatment: "Surgery",
-        joinedDate: "05/01/2005",
-        joinedTime: "10:00",
-        dischargeDate: "15/01/2005",
-        dischargeTime: "18:00",
-        nameOfHospital: "AJ",
-      },
-      {
-        key: 5,
-        reason: "Cardiac Arrest",
-        treatment: "Surgery",
-        joinedDate: "05/01/2005",
-        joinedTime: "10:00",
-        dischargeDate: "15/01/2005",
-        dischargeTime: "18:00",
-        nameOfHospital: "AJ",
-      },
-    ];
+const HospitalizationHistoryPage = () => {
+  const state = useSelector(state => state.patient);
+  const hospitalList = state.medicalRecords.hospitalized;
+  console.log(hospitalList)
 
-    setHospitalList(response);
-  };
 
-  useEffect(() => {
-    getHospitalization();
-  });
+ 
+  
 
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.container}>
-        <NameCard
-          imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
-          name="Swasthik Shetty"
-        />
+      <NameCard
+          imageUrl={state.image}
+          name={state.name}
+      />
         <View style={styles.panel}>
           <Text style={styles.title}>Hospitalization History</Text>
           {hospitalList.length ? (
