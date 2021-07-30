@@ -11,10 +11,11 @@ const RowComponent = (medicineName, medType, dosage) => {
   );
 };
 
-const TableComponent = ({ date, medicine }) => {
+const TableComponent = (props) => {
+  const medicine = props;
   return (
     <View style={styles.table}>
-      <Text>{date}</Text>
+      {/* <Text>{date}</Text> */}
 
       <View style={styles.row}>
         <View>

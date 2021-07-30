@@ -9,6 +9,7 @@ import {
   StatusBar,
   KeyboardAvoidingView,
   Image,
+  ScrollView,
 } from "react-native";
 import { SegmentedControls } from "react-native-radio-buttons";
 
@@ -98,7 +99,7 @@ const DoctorSignUp = ({ navigation }) => {
       .catch((error) => alert(error.message));
   };
   return (
-    <SafeAreaView>
+    <ScrollView contentContainerStyle={{ flex: 1 }}>
       <View style={styles.container}>
         <View style={styles.form}>
           <View style={styles.profile}>
@@ -206,7 +207,7 @@ const DoctorSignUp = ({ navigation }) => {
                 onSelection={(text) => setOption(text)}
                 selectedOption={option}
                 optionContainerStyle={{ flex: 1 }}
-                containerBorderTint={"white"}
+                containerBorderTint={"black"}
               />
             </View>
           </KeyboardAvoidingView>
@@ -219,7 +220,7 @@ const DoctorSignUp = ({ navigation }) => {
           <Text style={styles.signInLink}>Don't have an account? Register</Text>
         </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 
@@ -242,7 +243,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: StatusBar.currentHeight,
     alignItems: "center",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
     paddingVertical: 20,
   },
   profile: {
@@ -286,9 +287,9 @@ const styles = StyleSheet.create({
     color: "white",
   },
   radio: {
-    width: "75%",
+    width: "60%",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 50,
+    marginVertical: 5,
   },
 });

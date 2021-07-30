@@ -13,12 +13,10 @@ import TableComponent from "../components/TableComponent";
 import NameCard from "../components/NameCard";
 import { useSelector } from "react-redux";
 
-
 const MedicineHistoryPage = () => {
-  const state = useSelector(state => state.patient);
-  const medData = state.medicalRecords;
-  console.log(medData)
-
+  const state = useSelector((state) => state.patient);
+  const medData = state.medicalRecords.medication;
+  console.log(medData);
 
   // const getMedData = () => {
   //   const data = [
@@ -132,19 +130,18 @@ const MedicineHistoryPage = () => {
 
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.scrollView}>
-      <NameCard
-          imageUrl={state.image}
-          name={state.name}
-      />
+      <ScrollView contentContainerStyle={{ flex: 1 }}>
+        <NameCard imageUrl={state.image} name={state.name} />
         <View style={styles.panel}>
           <Text style={styles.title}>Prescription History</Text>
           {medData.length ? (
             <View>
-              {medData.map((data,key) => {
+              {/* {medData.map((data, key) => {
                 // This will render a row for each data element.
                 return <TableComponent key={key} {...data} />;
-              })}
+              })} */}
+
+              <TableComponent {...medData} />
             </View>
           ) : (
             <Text style={styles.altText}>No Prescription Data</Text>
