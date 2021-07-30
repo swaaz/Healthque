@@ -13,34 +13,28 @@ import TableComponent from "../components/TableComponent";
 import NameCard from "../components/NameCard";
 import { useSelector } from "react-redux";
 
-
 const MedicineHistoryPage = () => {
-  const state = useSelector(state => state.patient);
+  const state = useSelector((state) => state.patient);
   const medData = state.medicalRecords.medication;
-  console.log(medData)
+  console.log(medData);
 
   return (
-    <View style={styles.container}>
-      <ScrollView style={styles.scrollView}>
-      <NameCard
-          imageUrl={state.image}
-          name={state.name}
-      />
+    <ScrollView contentContainerStyle={{ flex: 1 }}>
+      <View style={styles.container}>
+        <NameCard imageUrl={state.image} name={state.name} />
         <View style={styles.panel}>
           <Text style={styles.title}>Prescription History</Text>
+
           {medData.length ? (
-            <View>
-              {medData.map((data,key) => {
-                // This will render a row for each data element.
-                return <TableComponent key={key} {...data} />;
-              })}
+            <View style={styles.card}>
+              <TableComponent {...medData} />
             </View>
           ) : (
             <Text style={styles.altText}>No Prescription Data</Text>
           )}
         </View>
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -56,6 +50,7 @@ const styles = StyleSheet.create({
   panel: {
     width: "100%",
     height: "100%",
+    flex: 1,
     backgroundColor: "#5BA2F4",
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
@@ -77,5 +72,13 @@ const styles = StyleSheet.create({
   scrollView: {
     width: "100%",
     height: "100%",
+  },
+  body: {
+    height: "100%",
+    width: "100%",
+  },
+  card: {
+    height: "100%",
+    width: "75%",
   },
 });

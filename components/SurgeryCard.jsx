@@ -1,15 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const SurgeryCard = ({
-  date,
-  procName,
-  surgeryType,
-  surgeryArea,
-  detailsURI,
-  docName,
-}) => {
+const SurgeryCard = (props) => {
   //   docName = "suhan";
+  const { date, surgeryName, procedure, treatment, detailsURI, docName } =
+    props;
+  console.log(props);
+
   return (
     <View style={styles.container}>
       <View style={styles.table}>
@@ -22,13 +19,13 @@ const SurgeryCard = ({
 
         <View style={styles.column}>
           <Text>{date}</Text>
-          <Text>{procName}</Text>
-          <Text>{surgeryType}</Text>
-          <Text>{surgeryArea}</Text>
+          <Text>{surgeryName}</Text>
+          <Text>{procedure}</Text>
+          <Text>{treatment}</Text>
         </View>
       </View>
 
-      <View style={styles.subtitle}>
+      {/* <View style={styles.subtitle}>
         <Text style={styles.subtitleText}>
           Signed off by Dr. {docName ? docName : "NoName"}
         </Text>
@@ -36,7 +33,7 @@ const SurgeryCard = ({
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonTitle}>Details</Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -85,7 +82,7 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#C4C4C4",
+    // backgroundColor: "#C4C4C4",
     // width: 25,
     padding: 3,
     // paddingVertical: 10,

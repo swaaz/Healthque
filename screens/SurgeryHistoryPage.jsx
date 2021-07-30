@@ -6,20 +6,14 @@ import NameCard from "../components/NameCard";
 import SurgeryCard from "../components/SurgeryCard";
 
 const SurgeryHistoryPage = () => {
-  
-  const state = useSelector((state) => state.patient) ;
-  const surgeryList = state.medicalRecords.surgery ;
-  console.log(state)
-
-  
+  const state = useSelector((state) => state.patient);
+  const surgeryList = state.medicalRecords.surgery;
+  console.log(state);
 
   return (
-    <ScrollView style={styles.scrollView}>
+    <ScrollView>
       <View style={styles.container}>
-        <NameCard
-            imageUrl={state.image}
-            name={state.name}
-        />
+        <NameCard imageUrl={state.image} name={state.name} />
         <View style={styles.panel}>
           <Text style={styles.title}>Surgery History</Text>
           {surgeryList.length ? (
@@ -29,7 +23,9 @@ const SurgeryHistoryPage = () => {
               })}
             </View>
           ) : (
-            <Text style={styles.altText}>No Previous surgery data</Text>
+            <View style={styles.altTextContainer}>
+              <Text style={styles.altText}>No Previous surgery data</Text>
+            </View>
           )}
         </View>
       </View>
@@ -41,8 +37,9 @@ export default SurgeryHistoryPage;
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: "100%",
+    // width: "100%",
+    // height: "100%",
+    flex: 1,
     alignItems: "center",
     justifyContent: "space-between",
   },
@@ -55,6 +52,8 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 50,
     // justifyContent: "center",
     alignItems: "center",
+    flex: 1,
+    flexDirection: "column",
   },
   title: {
     fontSize: 30,
@@ -66,10 +65,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "white",
     fontWeight: "600",
-    marginTop: "75%",
   },
-  scrollView: {
+  altTextContainer: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  card: {
     width: "100%",
     height: "100%",
+    padding: 20,
   },
 });

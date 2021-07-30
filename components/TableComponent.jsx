@@ -1,47 +1,32 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const RowComponent = (medicineName, medType, dosage) => {
+const TableComponent = (props) => {
+  let medicine = props;
+  medicine = Object.values(medicine);
+  //   console.log("Medine Table Component");
+  //   console.log(medicine);
   return (
-    <View style={styles.row}>
-      <Text>{medicineName}</Text>
-      <Text>{medType}</Text>
-      <Text>{dosage}</Text>
-    </View>
-  );
-};
+    <View style={styles.item}>
+      {medicine.map((med, key) => {
+        return (
+          <View key={key} style={styles.container}>
+            <View style={styles.table}>
+              <View style={styles.column}>
+                <Text style={styles.category}>Date</Text>
+                <Text style={styles.category}>Medicine Name</Text>
+                <Text style={styles.category}>Strength</Text>
+              </View>
 
-const TableComponent = ({ date, medicine }) => {
-  return (
-    <View style={styles.table}>
-      <Text>{date}</Text>
-
-      <View style={styles.row}>
-        <View>
-          <Text style={[styles.column, styles.heading]}>Medicine Name</Text>
-          {medicine.map((med) => {
-            // console.log(med);
-            //   return <RowComponent {...med} />;
-            return <Text style={styles.column}>{med.medicineName}</Text>;
-          })}
-        </View>
-        <View>
-          <Text style={[styles.column, styles.heading]}>Medicine Type</Text>
-          {medicine.map((med) => {
-            // console.log(med);
-            //   return <RowComponent {...med} />;
-            return <Text style={styles.column}>{med.medType}</Text>;
-          })}
-        </View>
-        <View>
-          <Text style={[styles.column, styles.heading]}>Quantity</Text>
-          {medicine.map((med) => {
-            // console.log(med);
-            //   return <RowComponent {...med} />;
-            return <Text style={styles.column}>{med.quantity}</Text>;
-          })}
-        </View>
-      </View>
+              <View style={styles.column}>
+                <Text>{med.date}</Text>
+                <Text>{med.name}</Text>
+                <Text>{med.strength}</Text>
+              </View>
+            </View>
+          </View>
+        );
+      })}
     </View>
   );
 };
@@ -49,23 +34,57 @@ const TableComponent = ({ date, medicine }) => {
 export default TableComponent;
 
 const styles = StyleSheet.create({
-  row: {
-    flexDirection: "row",
+  item: {
+    height: "100%",
+    width: "100%",
+    flex: 1,
+    justifyContent: "flex-start",
+  },
+  container: {
+    marginTop: 20,
+    padding: 20,
+    borderRadius: 40,
+    backgroundColor: "#FFF",
+    alignItems: "center",
+    justifyContent: "center",
+    // width: "75%",
   },
   table: {
-    padding: 10,
-    margin: 10,
-    backgroundColor: "#FFF",
-    borderRadius: 40,
-    margin: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
   },
   column: {
-    flex: 1,
+    flexDirection: "column",
     padding: 10,
   },
-  heading: {
-    fontWeight: "700",
+  category: {
+    fontWeight: "bold",
+  },
+  subtitle: {
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    fontSize: 8,
+  },
+  subtitleText: {
+    fontSize: 11,
+    color: "#7F858C",
+  },
+  button: {
+    marginLeft: 5,
+    alignItems: "center",
+    justifyContent: "center",
+    // backgroundColor: "#C4C4C4",
+    // width: 25,
+    padding: 3,
+    // paddingVertical: 10,
+    borderRadius: 10,
+    color: "white",
+  },
+  buttonTitle: {
+    // fontSize: 5,
+    fontWeight: "bold",
+    color: "#000",
   },
 });

@@ -63,7 +63,7 @@ const EmailVerification = ({navigation}) => {
           name="email"
           placeholder="Enter Email ID"
           value={formData}
-          onChangeText={(val) => setFormData(val) }
+          onChangeText={(val) => setFormData(val)}
         />
 
         <TouchableOpacity style={styles.button} onPress={onSubmit}>
@@ -87,12 +87,12 @@ const styles = StyleSheet.create({
 
   form: {
     width: "100%",
-    height: '35%',
-    minHeight : 200,
+    height: "35%",
+    // minHeight: 200,
     backgroundColor: "#5BA2F4",
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,
-    // justifyContent: "center",
+    justifyContent: "center",
     alignItems: "center",
   },
 
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     height: 56,
 
     marginTop: 15,
-    width: '80%',
+    width: "80%",
 
     // fontFamily: 'Poppins',
     // borderWidth: 1,
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#034C81",
-    width: '45%',
+    width: "45%",
     padding: 10,
     // paddingVertical: 10,
     borderRadius: 10,

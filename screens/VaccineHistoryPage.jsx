@@ -5,12 +5,9 @@ import NameCard from "../components/NameCard";
 import VaccineCard from "../components/VaccineCard";
 import { useSelector } from "react-redux";
 
-
 const VaccineHistoryPage = () => {
-  const state = useSelector(state => state.patient);
+  const state = useSelector((state) => state.patient);
   const vaccineList = state.medicalRecords.vaccination;
-  
-
 
   // const getVaccine = async () => {
   //   const response = [
@@ -84,16 +81,13 @@ const VaccineHistoryPage = () => {
   // });
 
   return (
-    <ScrollView style={styles.scrollView}>
+    <ScrollView style={styles.scrollView} contentContainerStyle={{ flex: 1 }}>
       <View style={styles.container}>
-      <NameCard
-          imageUrl={state.image}
-          name={state.name}
-      />
+        <NameCard imageUrl={state.image} name={state.name} />
         <View style={styles.panel}>
           <Text style={styles.title}>Vaccine History</Text>
           {vaccineList.length ? (
-            <View>
+            <View style={{ width: "100%", alignItems: "center" }}>
               {vaccineList.map((vaccine, key) => {
                 return <VaccineCard key={key} {...vaccine} />;
               })}

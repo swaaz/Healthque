@@ -55,7 +55,7 @@ const MedicineHistoryDetails = (props) => {
   });
 
   return (
-    <ScrollView style={styles.scrollView}>
+    <ScrollView contentContainerStyle={{ flex: 1 }}>
       <View style={styles.container}>
         <NameCard
           imageUrl="https://avatars.githubusercontent.com/u/44167922?v=4"
