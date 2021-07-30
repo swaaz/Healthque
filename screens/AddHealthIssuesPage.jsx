@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  ToastAndroid,
 } from "react-native";
 
 import NameCard from "../components/NameCard";
@@ -37,7 +38,7 @@ const AddHealthIssuesPage = () => {
       "medicalRecords.healthIssue" : firebase.firestore.FieldValue.arrayUnion(formData)
     }
     )
-    .then(() => console.log('data updated') )
+    .then(() => ToastAndroid.show('Data added Successfully!!!',ToastAndroid.SHORT))
     .catch(err => alert(err.message))
         
   }

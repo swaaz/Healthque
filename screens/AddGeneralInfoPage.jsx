@@ -8,6 +8,7 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  ToastAndroid,
 } from "react-native";
 
 import NameCard from "../components/NameCard";
@@ -32,7 +33,7 @@ const AddGeneralInfoPage = () => {
       "medicalRecords.general.height" : formData.height
     }
     )
-    .then(() => console.log('data updated') )
+    .then(() => ToastAndroid.show('Data added Successfully!!!',ToastAndroid.SHORT))
     .catch(err => alert(err.message))
         
   }
