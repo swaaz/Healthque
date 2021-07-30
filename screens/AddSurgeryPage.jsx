@@ -17,50 +17,6 @@ import {
 
 import NameCard from "../components/NameCard";
 
-const RadioButton = (props) => {
-  return (
-    <SafeAreaView>
-      <View
-        style={{
-          flexDirection: "row",
-          alignContent: "center",
-          alignItems: "center",
-          marginTop: 30,
-          marginRight: 10,
-        }}
-      >
-        <View
-          style={[
-            {
-              height: 24,
-              width: 24,
-              borderRadius: 12,
-              borderWidth: 2,
-              borderColor: "#000",
-              alignItems: "center",
-              justifyContent: "center",
-              marginRight: 5,
-            },
-            props.style,
-          ]}
-        >
-          {props.selected && (
-            <View
-              style={{
-                height: 12,
-                width: 12,
-                borderRadius: 6,
-                backgroundColor: "#000",
-              }}
-            />
-          )}
-        </View>
-        <Text style={{ fontSize: 20 }}>{props.text}</Text>
-      </View>
-    </SafeAreaView>
-  );
-};
-
 const AddSurgeryPage = () => {
   const form = {
     name: "",
