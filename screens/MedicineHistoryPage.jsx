@@ -129,8 +129,8 @@ const MedicineHistoryPage = () => {
   // }, []);
 
   return (
-    <View style={styles.container}>
-      <ScrollView contentContainerStyle={{ flex: 1 }}>
+    <ScrollView contentContainerStyle={{ flex: 1 }}>
+      <View style={styles.container}>
         <NameCard imageUrl={state.image} name={state.name} />
         <View style={styles.panel}>
           <Text style={styles.title}>Prescription History</Text>
@@ -147,8 +147,8 @@ const MedicineHistoryPage = () => {
             <Text style={styles.altText}>No Prescription Data</Text>
           )}
         </View>
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -162,8 +162,9 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   panel: {
-    width: "100%",
-    height: "100%",
+    // width: "100%",
+    // height: "100%",
+    flex: 1,
     backgroundColor: "#5BA2F4",
     borderTopLeftRadius: 50,
     borderTopRightRadius: 50,

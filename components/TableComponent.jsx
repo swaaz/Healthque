@@ -12,7 +12,10 @@ const RowComponent = (medicineName, medType, dosage) => {
 };
 
 const TableComponent = (props) => {
-  const medicine = props;
+  let medicine = props;
+  medicine = Object.values(medicine);
+  console.log("Medine Table Component");
+  console.log(medicine);
   return (
     <View style={styles.table}>
       {/* <Text>{date}</Text> */}
@@ -20,10 +23,14 @@ const TableComponent = (props) => {
       <View style={styles.row}>
         <View>
           <Text style={[styles.column, styles.heading]}>Medicine Name</Text>
-          {medicine.map((med) => {
+          {medicine.map((med, key) => {
             // console.log(med);
             //   return <RowComponent {...med} />;
-            return <Text style={styles.column}>{med.medicineName}</Text>;
+            return (
+              <Text key={key}>
+                {med.name}
+              </Text>
+            );
           })}
         </View>
         <View>
