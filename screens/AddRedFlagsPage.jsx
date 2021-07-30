@@ -13,13 +13,16 @@ import {
 import NameCard from "../components/NameCard";
 import * as firebase from 'firebase'
 import { db } from '../firebase'
+import { useSelector } from "react-redux";
+
 const AddRedFlagsPage = () => {
-  
+  const state = useSelector(state => state.patient);
+
   const [formData, setFormData] = useState('');
 
   const onSubmit = () => {
     
-    db.collection('patients').doc('sham@sham.in')
+    db.collection('patients').doc(state.email)
     .update(
     {
         'medicalRecords.redFlags' : firebase.firestore.FieldValue.arrayUnion(formData)
@@ -32,8 +35,8 @@ const AddRedFlagsPage = () => {
   return (
     <View style={styles.container}>
       <NameCard
-        imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
-        name="Swasthik Shetty"
+          imageUrl={state.image}
+          name={state.name}
       />
 
       <Image

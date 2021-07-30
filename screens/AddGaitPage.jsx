@@ -13,7 +13,11 @@ import {
 import NameCard from "../components/NameCard";
 import * as firebase from 'firebase'
 import { db } from '../firebase'
+import { useSelector } from "react-redux";
+
 const AddGaitPage = () => {
+  const state = useSelector(state => state.patient);
+
   const form = {
     test: "",
     condition: "",
@@ -23,7 +27,7 @@ const AddGaitPage = () => {
   const [formData, setFormData] = useState(form);
   const onSubmit = () => {
     
-    db.collection('patients').doc('sham@sham.in')
+    db.collection('patients').doc(state.email)
     .update(
     {
         'medicalRecords.gait' : firebase.firestore.FieldValue.arrayUnion(formData)
@@ -37,8 +41,8 @@ const AddGaitPage = () => {
   return (
     <View style={styles.container}>
       <NameCard
-        imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
-        name="Swasthik Shetty"
+          imageUrl={state.image}
+          name={state.name}
       />
 
       <Image

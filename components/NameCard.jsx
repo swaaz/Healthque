@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 
 const NameCard = ({ imageUrl, name }) => {
-  console.log(imageUrl, name);
   return (
     <View style={styles.container}>
       <Image style={styles.profileImg} source={{ uri: imageUrl }} />
