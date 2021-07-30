@@ -32,7 +32,7 @@ const EmailVerification = ({navigation}) => {
         if(doc.exists){
 
           navigation.navigate("PatientHomePageDoctor");
-          dispatch(updateStatePatient(state));
+          dispatch(updateStatePatient(doc.data()));
         }
         else{
           alert('no doc found');

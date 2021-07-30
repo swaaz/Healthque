@@ -159,9 +159,7 @@ const PatientHomePageDoctor = ({navigation}) => {
                         {/* {
                             state.medicalRecords.redFlags.map((data,key) => <RedFlag key={key} label={data} />)
                         } */}
-                        {/* <RedFlag label={'swaaz'} />
-                        <RedFlag label={'swaaz'} />
-                        <RedFlag label={'swaaz'} /> */}
+                        
                         
                     </View>
 
