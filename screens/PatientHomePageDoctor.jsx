@@ -15,25 +15,7 @@ const PatientHomePageDoctor = ({navigation}) => {
         .then(() => navigation.navigate('LandingOption') )
     }
 
-    // const onUpdate = () => {
-        
-    //         console.log('ptrssed')
-
-    //         db.collection('patients').doc('hEwopOnPibUJPK2XRHMa')
-    //         .update(
-    //         {
-    //             redFlags : firebase.firestore.FieldValue.arrayUnion(
-    //                 {
-    //                     title : 'fg',
-    //                     where: 'sgh'
-    //                 }
-    //             )
-    //         }
-    //         )
-    //         .then(() => console.log('data ipdated') )
-    //         .catch(err => alert(err.message))
-        
-    // }
+    
  
 
     return (
@@ -156,14 +138,11 @@ const PatientHomePageDoctor = ({navigation}) => {
 
                     <Text style={styles.title}>Red Flags</Text>
                     <View style={styles.labels}>
-                        {/* {
+                        {
                             state.medicalRecords.redFlags.map((data,key) => <RedFlag key={key} label={data} />)
-                        } */}
-                        
-                        
-                    </View>
+                        }
 
-                    
+                    </View>
 
                 </View>
             </View>

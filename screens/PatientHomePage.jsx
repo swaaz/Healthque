@@ -16,31 +16,13 @@ const PatientHomePage = ({navigation}) => {
         .then(()=> navigation.navigate('LandingOption') )
     }
 
-    const onUpdate = () => {
-        
-            console.log('ptrssed')
-
-            db.collection('patients').doc('hEwopOnPibUJPK2XRHMa')
-            .update(
-            {
-                redFlags : firebase.firestore.FieldValue.arrayUnion(
-                    {
-                        title : 'fg',
-                        where: 'sgh'
-                    }
-                )
-            }
-            )
-            .then(() => console.log('data ipdated') )
-            .catch(err => alert(err.message))
-        
-    }
+  
 
     return (
         <SafeAreaView>
             <View style={styles.container}>
             <Image
-                    source={{uri : 'https://avatars.githubusercontent.com/u/42874695?v=4'}}
+                    source={{uri : state.image}}
                     style={styles.profile}
                 />
                 <View  style={styles.group}>
@@ -56,28 +38,22 @@ const PatientHomePage = ({navigation}) => {
                         <Text style={styles.digitTitle}>Age</Text>
                     </View>
                     <View style={styles.col}>
-                        <Text style={styles.digit}>{state.weight}</Text>
+                        <Text style={styles.digit}>{state.medicalRecords.general.weight}</Text>
                         <Text style={styles.digitTitle}>Weight</Text>
                     </View>
                     <View style={styles.col}>
-                        <Text style={styles.digit}>{state.height}</Text>
+                        <Text style={styles.digit}>{state.medicalRecords.general.height}</Text>
                         <Text style={styles.digitTitle}>Height</Text>
                     </View>
                 </View>
 
                 <View style={styles.card}>
-                    {/* <TouchableOpacity onPress={signOut} style={styles.button}>
-                        <Image
-                            source={require('../assets/icons/plus.png')}
-                            style={styles.plus}
-                        />
-                    </TouchableOpacity> */}
-
+                    
 
                     <Text style={styles.title}>History</Text>
 
                     <View style={styles.scrollRow}>
-                        <ScrollView
+                    <ScrollView
                             horizontal
                             showsHorizontalScrollIndicator={false}
                         >
@@ -93,7 +69,7 @@ const PatientHomePage = ({navigation}) => {
                                 </View>
                             </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={onUpdate}
+                                onPress={() => navigation.navigate('VaccineHistoryPage')}
                             >
                                 <View style={styles.buttonHistory}>
                                     <Image
@@ -104,7 +80,9 @@ const PatientHomePage = ({navigation}) => {
                                 </View>
                             </TouchableOpacity>
 
-                            <TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate('MedicineHistoryPage')}
+                            >
                                 <View style={styles.buttonHistory}>
                                     <Image
                                         source={require('../assets/icons/medic.png')}
@@ -113,7 +91,9 @@ const PatientHomePage = ({navigation}) => {
                                     <Text style={styles.buttonTitle}>Medication</Text>
                                 </View>
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            {/* <TouchableOpacity
+                                onPress={() => navigation.navigate('HospitalizationHistoryPage')}
+                            >
                                 <View style={styles.buttonHistory}>
                                     <Image
                                         source={require('../assets/icons/healthrecord.png')}
@@ -121,9 +101,11 @@ const PatientHomePage = ({navigation}) => {
                                     />
                                     <Text style={styles.buttonTitle}>Health Issue</Text>
                                 </View>
-                            </TouchableOpacity>
+                            </TouchableOpacity> */}
 
-                            <TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate('HospitalizationHistoryPage')}
+                            >
                                 <View style={styles.buttonHistory}>
                                     <Image
                                         source={require('../assets/icons/hospital.png')}
