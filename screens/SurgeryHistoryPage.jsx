@@ -6,22 +6,26 @@ import NameCard from "../components/NameCard";
 import SurgeryCard from "../components/SurgeryCard";
 
 const SurgeryHistoryPage = () => {
-  const surgeryList = useSelector((state) => state);
-  console.log(surgeryList);
+  
+  const state = useSelector((state) => state.patient) ;
+  const surgeryList = state.medicalRecords.surgery ;
+  console.log(surgeryList)
+
+  
 
   return (
     <ScrollView style={styles.scrollView} contentContainerStyle={{ flex: 1 }}>
       <View style={styles.container}>
         <NameCard
-          imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
-          name="Swasthik Shetty"
+            imageUrl={state.image}
+            name={state.name}
         />
         <View style={styles.panel}>
           <Text style={styles.title}>Surgery History</Text>
           {surgeryList.length ? (
             <View>
-              {surgeryList.map((surgery) => {
-                return <SurgeryCard key={surgery.key} {...surgery} />;
+              {surgeryList.map((surgery, key) => {
+                return <SurgeryCard key={key} {...surgery} />;
               })}
             </View>
           ) : (

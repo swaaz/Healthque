@@ -9,25 +9,33 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import NameCard from "../components/NameCard";
 // import * as firebase from "firebase";
 import { db } from "../firebase";
+import { updateStatePatient } from "../state/actionCreators";
 
-const EmailVerification = ({ navigation }) => {
-  const [formData, setFormData] = useState("");
+const EmailVerification = ({navigation}) => {
+  const dispatch = useDispatch();
+
+  
+  const [formData, setFormData] = useState('');
+  const state = useSelector(state => state.doctor);
 
   const onSubmit = () => {
     const data = db.collection("patients").doc(formData);
     data
       .get()
       .then((doc) => {
-        if (doc.exists) {
-          navigation.navigate("PatientHomePageDoctor", {
-            state: doc.data(),
-          });
-        } else {
-          alert("no doc found");
+        if(doc.exists){
+
+          navigation.navigate("PatientHomePageDoctor");
+          dispatch(updateStatePatient(state));
+        }
+        else{
+          alert('no doc found');
         }
       })
       .catch((err) => console.log(err));
@@ -36,8 +44,8 @@ const EmailVerification = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <NameCard
-        imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
-        name="Swasthik Shetty"
+        imageUrl = {state.image}
+        name = {state.name}
       />
 
       <Image

@@ -3,17 +3,16 @@ import { Image, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, Vie
 import { useSelector } from 'react-redux'
 
 const AddDetails = ({navigation}) => {
-    const state = useSelector(state => state);
-    console.log(state)
+    const state = useSelector(state => state.patient);
     return (
        <SafeAreaView>
             <View style={styles.container}>
                 <View style={styles.section}>
                     <Image
-                        source={{ uri : 'https://avatars.githubusercontent.com/u/42874695?v=4'}}
+                        source={{ uri :state.image}}
                         style={styles.profile}
                     />
-                    <Text style={styles.name}>Swasthik Shetty</Text>
+                    <Text style={styles.name}>{ state.name }</Text>
                     <Text style={styles.title}>Add Details</Text>
 
                     <View style={styles.row}>

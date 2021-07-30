@@ -5,47 +5,42 @@ import {auth, db } from '../firebase';
 import * as firebase from 'firebase'
 import { useDispatch } from 'react-redux';
 import { updateStatePatient } from '../state/actionCreators';
+import { useSelector } from 'react-redux';
 
 const PatientHomePageDoctor = ({navigation}) => {
-    const dispatch = useDispatch();
-    const state = navigation.getParam('state');
+    const state = useSelector(state => state.patient);
 
     const signOut = () => {
         auth.signOut()
         .then(() => navigation.navigate('LandingOption') )
     }
 
-    const onUpdate = () => {
+    // const onUpdate = () => {
         
-            console.log('ptrssed')
+    //         console.log('ptrssed')
 
-            db.collection('patients').doc('hEwopOnPibUJPK2XRHMa')
-            .update(
-            {
-                redFlags : firebase.firestore.FieldValue.arrayUnion(
-                    {
-                        title : 'fg',
-                        where: 'sgh'
-                    }
-                )
-            }
-            )
-            .then(() => console.log('data ipdated') )
-            .catch(err => alert(err.message))
+    //         db.collection('patients').doc('hEwopOnPibUJPK2XRHMa')
+    //         .update(
+    //         {
+    //             redFlags : firebase.firestore.FieldValue.arrayUnion(
+    //                 {
+    //                     title : 'fg',
+    //                     where: 'sgh'
+    //                 }
+    //             )
+    //         }
+    //         )
+    //         .then(() => console.log('data ipdated') )
+    //         .catch(err => alert(err.message))
         
-    }
-    const onAdd = () => {
-        navigation.navigate('AddDetails');
-        dispatch(updateStatePatient(state));
-
-
-    }
+    // }
+ 
 
     return (
         <SafeAreaView>
             <View style={styles.container}>
             <Image
-                    source={{uri : 'https://avatars.githubusercontent.com/u/42874695?v=4'}}
+                    source={{uri : state.image }}
                     style={styles.profile}
                 />
                 <View  style={styles.group}>
@@ -71,7 +66,7 @@ const PatientHomePageDoctor = ({navigation}) => {
                 </View>
 
                 <View style={styles.card}>
-                    <TouchableOpacity onPress={onAdd}  style={styles.button}>
+                    <TouchableOpacity onPress={() => navigation.navigate('AddDetails')}  style={styles.button}>
                         <Image
                             source={require('../assets/icons/plus.png')}
                             style={styles.plus}
@@ -98,7 +93,7 @@ const PatientHomePageDoctor = ({navigation}) => {
                                 </View>
                             </TouchableOpacity>
                             <TouchableOpacity
-                                onPress={onUpdate}
+                                onPress={() => navigation.navigate('VaccineHistoryPage')}
                             >
                                 <View style={styles.buttonHistory}>
                                     <Image
@@ -109,7 +104,9 @@ const PatientHomePageDoctor = ({navigation}) => {
                                 </View>
                             </TouchableOpacity>
 
-                            <TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate('MedicineHistoryPage')}
+                            >
                                 <View style={styles.buttonHistory}>
                                     <Image
                                         source={require('../assets/icons/medic.png')}
@@ -118,7 +115,9 @@ const PatientHomePageDoctor = ({navigation}) => {
                                     <Text style={styles.buttonTitle}>Medication</Text>
                                 </View>
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            {/* <TouchableOpacity
+                                onPress={() => navigation.navigate('HospitalizationHistoryPage')}
+                            >
                                 <View style={styles.buttonHistory}>
                                     <Image
                                         source={require('../assets/icons/healthrecord.png')}
@@ -126,9 +125,11 @@ const PatientHomePageDoctor = ({navigation}) => {
                                     />
                                     <Text style={styles.buttonTitle}>Health Issue</Text>
                                 </View>
-                            </TouchableOpacity>
+                            </TouchableOpacity> */}
 
-                            <TouchableOpacity>
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate('HospitalizationHistoryPage')}
+                            >
                                 <View style={styles.buttonHistory}>
                                     <Image
                                         source={require('../assets/icons/hospital.png')}
@@ -155,9 +156,9 @@ const PatientHomePageDoctor = ({navigation}) => {
 
                     <Text style={styles.title}>Red Flags</Text>
                     <View style={styles.labels}>
-                        {
+                        {/* {
                             state.medicalRecords.redFlags.map((data,key) => <RedFlag key={key} label={data} />)
-                        }
+                        } */}
                         {/* <RedFlag label={'swaaz'} />
                         <RedFlag label={'swaaz'} />
                         <RedFlag label={'swaaz'} /> */}

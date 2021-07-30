@@ -10,17 +10,21 @@ import {
 } from "react-native";
 import { useSelector } from "react-redux";
 
-const DoctorHomePage = ({ navigation }) => {
-  const data = useSelector((state) => state.doctor);
-  console.log(data);
-  return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <Image source={{ uri: data.image }} style={styles.profile} />
-        <View style={styles.group}>
-          <Text style={styles.name}>{data.name}</Text>
-          <Text style={styles.gender}>{data.gender}</Text>
-        </View>
+
+const DoctorHomePage = ({navigation}) => {
+    const data = useSelector(state => state.doctor)
+    console.log(data)
+    return (
+        <SafeAreaView>
+            <View style={styles.container}>
+                <Image
+                    source={{uri : data.image }}
+                    style={styles.profile}
+                />
+                <View  style={styles.group}>
+                    <Text style={styles.name}>{data.name}</Text>
+                    <Text style={styles.gender}>{data.gender}</Text>
+                </View>
 
         <Text style={styles.location}>{data.location}</Text>
 

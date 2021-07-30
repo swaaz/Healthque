@@ -16,6 +16,7 @@ import {
 } from "react-native";
 
 import NameCard from "../components/NameCard";
+import { useSelector } from "react-redux";
 
 const AddSurgeryPage = () => {
   const form = {
@@ -26,13 +27,16 @@ const AddSurgeryPage = () => {
     treatment: "",
   };
   const [formData, setFormData] = useState(form);
+
   const [option, setOption] = useState("");
+  const state = useSelector((state) => state.patient);
   const options = ["Successful", "Unsuccessful"];
   const onSubmit = () => {
+    console.log(state.email);
     let data = formData;
     data.result = option;
     db.collection("patients")
-      .doc("sham@sham.in")
+      .doc(state.email)
       .update({
         "medicalRecords.surgery":
           firebase.firestore.FieldValue.arrayUnion(data),
@@ -44,10 +48,7 @@ const AddSurgeryPage = () => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <NameCard
-          imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
-          name="Swasthik Shetty"
-        />
+        <NameCard imageUrl={state.image} name={state.name} />
 
         <View style={styles.form}>
           <View>

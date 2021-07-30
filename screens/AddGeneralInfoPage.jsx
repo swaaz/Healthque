@@ -12,7 +12,11 @@ import {
 
 import NameCard from "../components/NameCard";
 import { db } from '../firebase'
+import { useSelector } from "react-redux";
+
 const AddGeneralInfoPage = () => {
+  const state = useSelector(state => state.patient);
+
   const form = {
     height: "",
     weight: ""
@@ -21,7 +25,7 @@ const AddGeneralInfoPage = () => {
 
   const onSubmit = () => {
     console.log(formData)
-    db.collection('patients').doc('sham@sham.in')
+    db.collection('patients').doc(state.email)
     .update(
     {
       "medicalRecords.general.weight" : formData.weight,
@@ -37,8 +41,8 @@ const AddGeneralInfoPage = () => {
   return (
     <View style={styles.container}>
       <NameCard
-        imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
-        name="Swasthik Shetty"
+          imageUrl={state.image}
+          name={state.name}
       />
 
       <Image

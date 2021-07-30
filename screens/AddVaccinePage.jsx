@@ -13,6 +13,7 @@ import {
 import NameCard from "../components/NameCard";
 import * as firebase from 'firebase'
 import { db } from '../firebase'
+import { useSelector } from "react-redux";
 
 /**
  * This component renders the vaccinate page
@@ -30,22 +31,14 @@ const AddVaccinePage = () => {
     validity: "",
   };
   const [formData, setFormData] = useState(form);
+  const state = useSelector(state => state.patient);
 
-  useEffect(() => {
-    console.log(formData);
-  });
 
-  //   const handleChange = (e) => {
-  //     const name = e.target.name;
-  //     const value = e.target.value;
-  //     console.log(e.target);
-  //     console.log(name)
-  //     setFormData({ ...formData, [name]: value });
-  //   };
+
 
   const onSubmit = () => {
     console.log(formData)
-    db.collection('patients').doc('sham@sham.in')
+    db.collection('patients').doc(state.email)
     .update(
     {
       "medicalRecords.vaccination" : firebase.firestore.FieldValue.arrayUnion(formData)
@@ -60,8 +53,8 @@ const AddVaccinePage = () => {
     <ScrollView>
       <View style={styles.container}>
         <NameCard
-          imageUrl="https://avatars.githubusercontent.com/u/42874695?v=4"
-          name="Swasthik Shetty"
+          imageUrl={state.image}
+          name={state.name}
         />
 
         <View style={styles.form}>
