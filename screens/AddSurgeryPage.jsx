@@ -33,7 +33,7 @@ const AddSurgeryPage = () => {
   const state = useSelector((state) => state.patient);
   const options = ["Successful", "Unsuccessful"];
   const onSubmit = () => {
-    console.log(state.email);
+    // console.log(state.email);
     let data = formData;
     data.result = option;
     db.collection('patients').doc(state.email)

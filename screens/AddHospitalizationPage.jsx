@@ -34,7 +34,7 @@ const AddHospitalizationPage = () => {
 
 
   const onSubmit = () => {
-    console.log(formData)
+    // console.log(formData)
     db.collection('patients').doc(state.email)
     .update(
     {

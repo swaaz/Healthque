@@ -5,7 +5,6 @@ const SurgeryCard = (props) => {
   //   docName = "suhan";
   const { date, surgeryName, procedure, treatment, detailsURI, docName } =
     props;
-  console.log(props);
 
   return (
     <View style={styles.container}>
