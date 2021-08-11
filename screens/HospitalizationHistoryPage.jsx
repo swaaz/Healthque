@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 const HospitalizationHistoryPage = () => {
   const state = useSelector((state) => state.patient);
   const hospitalList = state.medicalRecords.hospitalized;
-  console.log(hospitalList);
+  // console.log(hospitalList);
 
   return (
     <ScrollView contentContainerStyle={{ flex: 1 }}>

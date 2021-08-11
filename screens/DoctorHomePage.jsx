@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 
 const DoctorHomePage = ({navigation}) => {
     const data = useSelector(state => state.doctor)
-    console.log(data)
+    // console.log(data)
     return (
         <SafeAreaView>
             <View style={styles.container}>

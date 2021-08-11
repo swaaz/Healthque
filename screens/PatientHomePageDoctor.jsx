@@ -120,17 +120,18 @@ const PatientHomePageDoctor = ({ navigation }) => {
                   <Text style={styles.buttonTitle}>Medication</Text>
                 </View>
               </TouchableOpacity>
-              {/* <TouchableOpacity
-                                onPress={() => navigation.navigate('HospitalizationHistoryPage')}
-                            >
-                                <View style={styles.buttonHistory}>
-                                    <Image
-                                        source={require('../assets/icons/healthrecord.png')}
-                                        style={styles.icons}
-                                    />
-                                    <Text style={styles.buttonTitle}>Health Issue</Text>
-                                </View>
-                            </TouchableOpacity> */}
+              
+            {/* <TouchableOpacity
+                onPress={() => navigation.navigate('HospitalizationHistoryPage')}
+              >
+                <View style={styles.buttonHistory}>
+                    <Image
+                        source={require('../assets/icons/healthrecord.png')}
+                        style={styles.icons}
+                    />
+                    <Text style={styles.buttonTitle}>Health Issue</Text>
+                </View>
+            </TouchableOpacity> */}
 
               <TouchableOpacity
                 onPress={() =>

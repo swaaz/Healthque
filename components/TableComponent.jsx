@@ -4,8 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 const TableComponent = (props) => {
   let medicine = props;
   medicine = Object.values(medicine);
-  //   console.log("Medine Table Component");
-  //   console.log(medicine);
+
   return (
     <View style={styles.item}>
       {medicine.map((med, key) => {

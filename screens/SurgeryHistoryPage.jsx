@@ -8,7 +8,7 @@ import SurgeryCard from "../components/SurgeryCard";
 const SurgeryHistoryPage = () => {
   const state = useSelector((state) => state.patient);
   const surgeryList = state.medicalRecords.surgery;
-  console.log(state);
+  // console.log(state);
 
   return (
     <ScrollView>
