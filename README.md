@@ -8,7 +8,8 @@
 
  
  # About 📌
- A location tracking application for mobile devices built by The Boys as Minor Project. MapMe tracks your location and give you details on the route, average speed,time and distance covered. To track just tap on 'Start Tracking' and the app will now start collecting your coordinates and starts to draw PolyLines which are used to depict a route from one place to another. You can also view your tracked history and all these details are not collected by us, it is safely stored on your personal device.
+ An Electronic Health Record is collection of various medical records during one’s lifespan. These life time records need to be maintained with some standards else it would be very difficult to bring together the records from different hospitals or health care centres together. 
+The main purpose of this project is to provide people with the ease to access their health record anywhere anytime at any hospital or health centre so that the doctor can have  the complete  history and give proper medication or treatment required  faster. Hence, the need for interoperability. This will interconnect all health care centres across the country and with the appropriate authorisation the health records could be accessed.
  
  # What's in here? 🤔
  - React Native :atom:
