@@ -42,7 +42,6 @@ const DoctorSignUp = ({ navigation }) => {
       quality: 1,
     });
 
-    // console.log(result);
 
     if (!result.cancelled) {
       setImage(result.uri);
@@ -98,6 +97,7 @@ const DoctorSignUp = ({ navigation }) => {
       })
       .catch((error) => alert(error.message));
   };
+  
   return (
     <ScrollView contentContainerStyle={{ flex: 1 }}>
       <View style={styles.container}>
@@ -242,7 +242,6 @@ const styles = StyleSheet.create({
     elevation: 5,
     alignItems: "center",
     paddingTop: StatusBar.currentHeight,
-    alignItems: "center",
     justifyContent: "center",
     paddingVertical: 20,
   },
@@ -287,9 +286,10 @@ const styles = StyleSheet.create({
     color: "white",
   },
   radio: {
-    width: "60%",
+    width: "70%",
     alignItems: "center",
     justifyContent: "center",
     marginVertical: 5,
+    // marginHorizontal: 'auto'
   },
 });

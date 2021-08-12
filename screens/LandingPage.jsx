@@ -4,7 +4,7 @@ import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 const LandingPage = ({ navigation }) => {
   useEffect(() => {
     const timeout = setTimeout(() => {
-      console.log("time out called!");
+      // console.log("time out called!");
       navigation.navigate("LandingOption");
     }, 3000);
   }, []);
