@@ -15,7 +15,14 @@ The main purpose of this project is to provide people with the ease to access th
  - React Native :atom:
  - Redux 🗄️
  - Firebase 🗺️
+# Mockups 🖌️
 
+<p>
+  <div align="center">
+    <img src="./readme/mockup.png" width="100%"/>
+   </div>
+ </p>
+ 
  
 # How to Build the App 📱
 
